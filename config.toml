@@ -1,0 +1,5 @@
+baseURL = "https://jabasco.dev/"
+languageCode = "en-us"
+title = "Jabasco.dev"
+author="Jacob Bas"
+theme = "ananke"
