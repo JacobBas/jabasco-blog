@@ -1,5 +1,8 @@
 baseURL = "https://jabasco.dev/"
 languageCode = "en-us"
-title = "Jabasco.dev"
-author="Jacob Bas"
-theme = "ananke"
+title = "jabasco.dev"
+
+[params]
+    author = "Jacob Bas"
+    linkedIn = "https://www.linkedin.com/in/jacob-bas-52019714b/"
+    github = "https://github.com/JacobBas"

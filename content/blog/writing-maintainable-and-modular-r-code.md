@@ -1,5 +1,5 @@
 ---
-title: "Creating Maintainable and Modular R Code"
+title: "Writing Maintainable and Modular R Code"
 date: 2021-09-29T11:49:27-07:00
 draft: false
 ---
@@ -16,12 +16,13 @@ My two favorite packages for supplementing this are:
 My recommendation is to use these two packages with any new R project. 
 
 ## renv
-The purpose of `renv` is similar to venv in python, modules in go, or cargo in rust; To help with
+The purpose of `renv` is similar to `venv` in python, modules in go, or cargo in rust; To help with
 dependency management so projects can be more stable and reproducible.
 
 `renv` does this by containing all work done to a single directory while also keeping a running
 list of dependencies and their versions. It also comes with a nice set of tooling to help
 with initializing, hydrating, and editing the packages that are used within a specific project.
+
 
 ## box
 The purpose of `box` is to help make code and the relationship between dependencies and other scripts

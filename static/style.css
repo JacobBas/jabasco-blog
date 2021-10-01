@@ -1,0 +1,241 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+:root {
+  --white: #fffffa;
+  --white2: #e6e6e1;
+  --black-800: #272727;
+  --black-400: #2e2e2e;
+  --blue: #016fb9;
+  --gray: #c0d7e4;
+  --gray2: #afbdcc;
+  --gray3: #dde5ec;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+html {
+  font-size: 95%;
+} /*16px*/
+
+body {
+  background: var(--white);
+  font-family: "Fira Code", sans-serif;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--black-400);
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin-bottom: 1rem;
+  width: min(50rem, 100%);
+  letter-spacing: 0.02em;
+}
+
+code {
+  padding: 0.15em 0.35em;
+  border: 1px solid var(--gray);
+  background-color: var(--gray3);
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+pre code {
+  padding: inherit;
+  border: inherit;
+  background-color: inherit;
+  border-radius: inherit;
+  font-weight: inherit;
+}
+
+pre {
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--black-800);
+  border-radius: 4px;
+  max-width: 60rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 2.5rem 0 1rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  color: var(--black-800);
+  font-style: italic;
+  width: min(75rem, 100%);
+  position: relative;
+}
+
+h1::before,
+h2::before,
+h3::before,
+h4::before,
+h5::before {
+  content: "";
+  position: absolute;
+  width: 0.75em;
+  height: 0.75em;
+  top: -0.1em;
+  left: 0;
+  background-color: var(--gray);
+  z-index: -1;
+}
+
+h1::after,
+h2::after,
+h3::after,
+h4::after,
+h5::after {
+  content: "";
+  position: absolute;
+  width: 0.75em;
+  height: 0.45em;
+  top: 0.2em;
+  left: 0;
+  background-color: var(--gray2);
+  z-index: -1;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 3.052rem;
+}
+
+h2 {
+  font-size: 2.441rem;
+}
+
+h3 {
+  font-size: 1.953rem;
+}
+
+h4 {
+  font-size: 1.563rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+small,
+.text_small {
+  font-size: 0.8rem;
+}
+
+.container {
+  padding: 1rem;
+  margin: auto;
+  width: 100%;
+  max-width: 1028px;
+}
+
+/* HEADER */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--black-800);
+  color: var(--gray);
+  z-index: 10;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+header .home-link {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 1rem 0 0;
+}
+
+header .social-info {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+header .social-info li {
+  margin: 0 0.5rem;
+}
+
+/* MAIN */
+main {
+  margin-top: 5rem;
+}
+
+main .split {
+  /* display: grid;
+  grid-template-columns: 2.62rem auto;
+  grid-template-areas: "sidebar main";
+  gap: 1.45rem; */
+}
+
+.main {
+  grid-area: main;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  box-shadow: 2px 1px 1px 0px var(--black-400);
+  background-color: var(--white2);
+  height: calc(100vh - 7rem);
+  font-size: 0.9rem;
+}
+
+main section {
+  margin: 0 0 2.5rem 0;
+}
+
+main .posts .post-preview {
+  font-size: 90%;
+  margin: 0 0 1.2rem 0;
+  padding: 0 0 0.65rem 0;
+  border-bottom: 1px solid var(--white2);
+}
+
+main .posts .post-preview .title {
+  margin: 0 0 0.65rem 0;
+  padding: 0 0 0 0;
+}
+
+main .posts .post-preview .preview {
+  margin: 0 0 0.65rem 0;
+  padding: 0;
+  max-width: 50rem;
+  word-wrap: break-word;
+}
+
+/* FOOTER */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  background-color: var(--black-800);
+  color: var(--gray);
+  z-index: 10;
+}
+
+footer .container {
+  font-size: 0.85rem;
+  padding: 0.1rem;
+}
