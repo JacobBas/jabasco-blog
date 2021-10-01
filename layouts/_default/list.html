@@ -1,0 +1,14 @@
+{{ define "main" }}
+<section class="posts">
+  <h2>Posts</h2>
+  {{ range (where .Site.Pages "Kind" "page") }}
+  <div class="post-preview">
+    <h3 class="title">{{ .Title }}</h3>
+    <p class="preview">{{ .Summary }}</p>
+    <button class="read-more">
+      <a href="{{ .File.Dir }}{{ .File.TranslationBaseName }}/"> read more </a>
+    </button>
+  </div>
+  {{ end }}
+</section>
+{{ end }}
