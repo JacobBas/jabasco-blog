@@ -2,7 +2,14 @@ baseURL = "https://jabasco.dev/"
 languageCode = "en-us"
 title = "jabasco.dev"
 
+# general website parameters
 [params]
     author = "Jacob Bas"
     linkedIn = "https://www.linkedin.com/in/jacob-bas-52019714b/"
     github = "https://github.com/JacobBas"
+
+# markdown settings using goldmark
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
