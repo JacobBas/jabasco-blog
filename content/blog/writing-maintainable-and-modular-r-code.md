@@ -23,8 +23,8 @@ My recommendation is to use these two packages with any new R project.
 
 <br/>
 
-## renv { .display .display-3 .text-italic} The purpose of `renv` is similar to
-`venv` in python, modules in go, or cargo in rust; To help with dependency
+## renv { .display .display-3 .text-italic} 
+The purpose of `renv` is similar to `venv` in python, modules in go, or cargo in rust; To help with dependency
 management so projects can be more stable and reproducible.
 
 `renv` does this by containing all work done to a single directory while also
@@ -34,7 +34,8 @@ packages that are used within a specific project.
 
 <br/>
 
-## box { .display .display-3 .text-italic} The purpose of `box` is to help make
+## box { .display .display-3 .text-italic} 
+The purpose of `box` is to help make
 code and the relationship between dependencies and other scripts more explicit
 by forcing the user to make deliberate use of import and export statements. As
 with `renv`, `box` points R in the direction of other more standardized
@@ -43,7 +44,8 @@ exports.
 
 <br/>
 
-## Example Project and Setup { .display .display-3 .text-italic} An example
+## Example Project and Setup { .display .display-3 .text-italic} 
+An example
 repository for how these tools can be used together can be found 
 [here](https://github.com/JacobBas/renv-box-example). 
 
@@ -56,7 +58,8 @@ There are 4 main steps to getting a project like this setup:
 
 <br/>
 
-## Further Uses { .display .display-3 .text-italic} One of the most interesting
+## Further Uses { .display .display-3 .text-italic} 
+One of the most interesting
 use cases for these two packages is leveraging them along side R shiny and
 shiny modules to create applications that are highly modular and extensible.
 
