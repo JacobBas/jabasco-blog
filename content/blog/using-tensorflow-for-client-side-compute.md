@@ -190,6 +190,9 @@ Click the button below to watch this run in real time!
 </table>
 
 <script>
+    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    console.log(isMobile)
+
     // selecting the dom elements that we want to update
     let table_simple_iteration = document.getElementById(
     "table-simple-iteration"
