@@ -13,6 +13,7 @@
 }
 
 .blog-post code {
+  font-size: 1rem;
   padding: 0.15em 0.35em;
   border: 1px solid var(--gray);
   background-color: var(--gray3);
