@@ -54,9 +54,8 @@ Wikipedia has a great introduction if you'd like to learn more:
 
 ## Solving a System of Equations { .display .display-3 .text-italic }
 When talking about complex modeling and machine learning techniques it really all boils down
-to solving for systems of equations given a specific set of data or observations with a 
-variable number of unknowns which is why it's so important to be able to solve for the 
-simple case.
+to solving for systems of equations given a specific set of data with a variable number of unknowns. 
+This is why it's so important to be able to solve for the simple case.
 
 
 ### Simple Example { .display .display-4 .text-italic }
