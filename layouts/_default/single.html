@@ -2,10 +2,8 @@
 <h1 class="display display-2 text-italic">{{ .Title }}</h1>
 <p class="text-italic">{{ .Date }}</p>
 <aside class="blog-post table-of-contents">
-    <h2 class="display display-3 text-italic">
-        Table of Contents
-    </h2>
-    {{ .TableOfContents }}
+  <h2 class="display display-3 text-italic">Table of Contents</h2>
+  {{ .TableOfContents }}
 </aside>
 <section>{{ .Content }}</section>
 {{ end }}

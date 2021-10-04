@@ -1,0 +1,145 @@
+Click the button below to watch this run in real time!
+
+<div>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.9.0/dist/tf.min.js"></script>
+
+<style>
+    .results-button {
+        padding: .25rem .75rem;
+        text-transform: uppercase;
+        background-color: var(--gray3);
+        border: 1px solid var(--gray2);
+        box-shadow: -2.5px -2px 0px 0px var(--gray2);
+        border-radius: 4px;
+        font-weight: 600;
+        font-style: italic;
+    }
+
+    #simple-results-table {
+        border-collapse: collapse;
+        box-shadow: -2.5px -2px 0px 0px var(--gray2);
+    }
+
+    #simple-results-table td,
+    #simple-results-table th {
+        width: clamp(8em, 10vh, 12em);
+        text-align: center;
+        border: 1px solid var(--gray2);
+    }
+
+    #simple-results-table th {
+        background-color: var(--gray3);
+    }
+</style>
+
+
+<button class="results-button" onclick="SolveSystem()">Solve System</button>
+
+<table id="simple-results-table">
+    <thead>
+    <tr>
+        <th>Iteration</th>
+        <th>MSE</th>
+        <th>x</th>
+        <th>y</th>
+        <th>z</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td id="table-simple-iteration">0</td>
+        <td id="table-simple-mse">0</td>
+        <td id="table-simple-x">1</td>
+        <td id="table-simple-y">-1</td>
+        <td id="table-simple-z">1</td>
+    </tr>
+    </tbody>
+</table>
+
+<script>
+    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    console.log(isMobile)
+
+    // selecting the dom elements that we want to update
+    let table_simple_iteration = document.getElementById(
+    "table-simple-iteration"
+    );
+    let table_simple_mse = document.getElementById("table-simple-mse");
+    let table_simple_x = document.getElementById("table-simple-x");
+    let table_simple_y = document.getElementById("table-simple-y");
+    let table_simple_z = document.getElementById("table-simple-z");
+
+    // triggers solving the system of equations
+    function SolveSystem() {
+        new Promise((resolve) => {
+            // initialize the tensors containing the known values
+            let a = tf.tensor([24, -100, 99], [3, 1]);
+            let b = tf.tensor([5, 0, 92], [3, 1]);
+            let c = tf.tensor([10, 12, 12], [3, 1]);
+            let d = tf.tensor([100, 57, 88], [3, 1]);
+
+            // initialize the unknown varibles to solve for
+            let x = tf.variable(tf.tensor([1]));
+            let y = tf.variable(tf.tensor([-1]));
+            let z = tf.variable(tf.tensor([1]));
+
+            // create the function from the tensors and unknowns
+            const func = (a, b, c) => {
+                return a.mul(x).add(b.mul(y)).add(c.mul(z));
+            };
+
+            // define our error function to optimize
+            const mse = (d, d_hat) => {
+                return d_hat.sub(d).square().mean();
+            };
+
+            // setting the learning rate and the optimization function
+            // we are going with the adam optimization function since it
+            // adaptively updates the learning rate which leads to slower
+            // iteration time, but better performance in the long
+            // run when we are trying to estimate the parameters; by using
+            // adam, we have a much better and more consitent time converging
+            // to the true values of the varibles
+            const learnRate = 0.1;
+            const optimizer = tf.train.adam(learnRate);
+
+            let i = 0;
+            var intr = setInterval(() => {
+            // initializing our error term and significance
+            let error_rounded;
+            let sigfigs = 10000;
+
+            // running the optimizer for our variables
+            optimizer.minimize(() => {
+                error = mse(d, func(a, b, c));
+                error_rounded =
+                Math.round(error.dataSync()[0] * sigfigs) / sigfigs;
+                return error;
+            });
+
+            // setting the displayed values
+            table_simple_iteration.innerText = i;
+            table_simple_mse.innerText = error_rounded;
+            table_simple_x.innerText =
+                Math.round(x.dataSync()[0] * sigfigs) / sigfigs;
+            table_simple_y.innerText =
+                Math.round(y.dataSync()[0] * sigfigs) / sigfigs;
+            table_simple_z.innerText =
+                Math.round(z.dataSync()[0] * sigfigs) / sigfigs;
+
+            // breaking if our error is zero to a specific significance
+            // or the iteration count is 5000 iterations
+            if (error_rounded === 0 || !error_rounded || i === 2000) {
+                clearInterval(intr);
+            }
+
+            // adding one to the iteration
+            ++i;
+            }, 0);
+
+            // resolving the promise
+            resolve();
+        });
+    }
+</script>
+</div>
