@@ -4,6 +4,7 @@ p {
   margin-bottom: 1rem;
   width: min(50rem, 100%);
   line-height: 1.75;
+  word-wrap: break-word;
 }
 
 /* weights */
