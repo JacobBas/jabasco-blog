@@ -84,3 +84,12 @@ p {
 .display-4 {
   font-size: clamp(1.15rem, 3.5vw, 1.5rem);
 }
+
+code {
+  padding: 2px 4px;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: #d6a500;
+  background-color: #f0f0f1;
+  border-radius: 4px;
+}
