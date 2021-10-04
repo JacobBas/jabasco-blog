@@ -13,7 +13,7 @@
 }
 
 .blog-post code {
-  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  font-size: 95rem;
   padding: 0.15em 0.35em;
   border: 1px solid var(--gray);
   background-color: var(--gray3);
