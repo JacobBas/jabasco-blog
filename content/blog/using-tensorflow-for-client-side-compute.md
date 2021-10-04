@@ -78,9 +78,9 @@ let c = tf.tensor([10, 12, 12], [3, 1]);
 let d = tf.tensor([100, 57, 88], [3, 1]);
 
 // initialize the unknown varibles to solve for
-let x = tf.variable(tf.tensor([getRandom(1)]));
-let y = tf.variable(tf.tensor([getRandom(-1)]));
-let z = tf.variable(tf.tensor([getRandom(1)]));
+let x = tf.variable(tf.tensor(1]));
+let y = tf.variable(tf.tensor(-1]));
+let z = tf.variable(tf.tensor(1]));
 
 // create the function from the tensors and unknowns
 const func = (a, b, c) => {
@@ -88,7 +88,8 @@ const func = (a, b, c) => {
 };
 
 // define our error function to optimize
-const mae = (d, d_hat) => {
+// we are using the mean squared error
+const mse = (d, d_hat) => {
     return d_hat.sub(d).square().mean();
 };
 ```
@@ -109,7 +110,7 @@ for (let i = 0; i < i + 2; i++) {
 
     // running the optimizer for our variables
     optimizer.minimize(() => {
-        error = mae(d, func(a, b, c));
+        error = mse(d, func(a, b, c));
         error_rounded = Math.round(error.dataSync()[0] * sigfigs) / sigfigs;
         return error;
     });
