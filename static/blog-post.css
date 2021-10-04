@@ -1,6 +1,11 @@
+.blog-post {
+  word-wrap: break-word;
+}
+
 .blog-post a {
   font-weight: 800;
   font-style: italic;
+  word-wrap: break-word;
 }
 
 .blog-post a:hover {
