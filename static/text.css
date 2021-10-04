@@ -81,5 +81,5 @@ p {
   font-size: clamp(1.5rem, 3.5vw, 2.25rem);
 }
 .display-4 {
-  font-size: 1.25rem;
+  font-size: clamp(1.15rem, 3.5vw, 1.5rem);
 }

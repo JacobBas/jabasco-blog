@@ -38,29 +38,6 @@ body {
   padding: 0;
 }
 
-code {
-  padding: 0.15em 0.35em;
-  border: 1px solid var(--gray);
-  background-color: var(--gray3);
-  border-radius: 4px;
-  font-weight: 500;
-}
-
-pre code {
-  padding: inherit;
-  border: inherit;
-  background-color: inherit;
-  border-radius: inherit;
-  font-weight: inherit;
-}
-
-pre {
-  padding: 0.4rem 0.75rem;
-  border: 1px solid var(--black-800);
-  border-radius: 4px;
-  max-width: 60rem;
-}
-
 .container {
   padding: 0.75rem 1.5rem;
   margin: auto;
