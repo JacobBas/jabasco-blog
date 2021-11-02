@@ -196,30 +196,3 @@ footer svg {
   width: 18px;
   height: 18px;
 }
-
-/* CODE */
-.hightlight {
-  overflow: auto !important;
-  position: relative !important;
-  font-size: 0.75rem;
-}
-
-.highlight pre,
-pre {
-  padding: 0.25rem 1rem 0.25rem 0.25rem;
-  overflow: auto;
-  line-height: 1.45;
-  border-radius: 6px;
-  font-size: 0.75rem;
-}
-
-.highlight pre code {
-  padding: 2px 0;
-  font-weight: 400;
-  border-radius: 4px;
-  font-size: 0.75rem;
-}
-
-.highlight pre code span {
-  font-size: 0.75rem;
-}
