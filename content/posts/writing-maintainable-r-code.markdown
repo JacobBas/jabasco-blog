@@ -5,6 +5,7 @@ date:   2021-09-29
 description: Using the renv and box packages in R to contribute to more maintainable and modular R code in the case of larger R projects. 
 categories: 
 ---
+## Intro
 One of the largest problems that I have with writing R code is that it does not
 come with standard tooling for creating modular code which contributes to the
 unmaintainability of larger R projects. Since R code relies heavily on

@@ -5,6 +5,7 @@ date:   2021-11-01
 description: Calculating a least squares linear regression in C/C++, Rust, Go, and Python. 
 categories: 
 ---
+## Intro
 One thing that I have consistently struggled with in the past year is figuring out which language I should devote my time to. In my current work, I primarily use Python, JavaScript, and R so I've natuaraly built up a proficiency using these languages, but my toolbox is missing a statically typed, compiled language that I can fall back on.
 
 I've been in this loop of attempting to learn C/C++, Rust, and Go but have struggled to develope a deeper understanding of the languages due to the constant context switching. They all have obvious strengths, weaknesses, and niches that they fill, but at the same time they are robust enough to complete most any project.
