@@ -4,14 +4,14 @@
     [markup.goldmark.renderer]
       unsafe = true
   [markup.highlight]
-    anchorLineNos = false
+    anchorLineNos = true
     codeFences = true
-    guessSyntax = false
+    guessSyntax = true
     hl_Lines = ''
     lineAnchors = ''
     lineNoStart = 1
     lineNos = true
-    lineNumbersInTable = true
+    lineNumbersInTable = false
     noClasses = true
     style = 'friendly'
     tabWidth = 2
