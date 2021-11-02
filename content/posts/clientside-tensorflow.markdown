@@ -1,13 +1,10 @@
 ---
-title: "Using Tensorflow.js for Client Side Compute"
-date: 2021-09-30T21:21:11-07:00
-draft: false
-desc: "In cases where you want as little computation to be done on the server, Tensorflow.js can be used as a great medium for client-side compute."
+layout: post
+title:  "Using TensorFlow.js for Client Side Compute"
+date:   2021-09-30
+categories: 
 ---
-
-<div class="blog-post">
-
-## Intro { .display .display-3 .text-italic }
+## Intro
 At my current job, one of the largest problems that we face is the problem of limited compute
 power for our analytical web applications or the server's ability to handle large computational 
 loads. This causes all sorts of problems such as slow compute times, server outages, and 
@@ -22,16 +19,14 @@ With pushing these processes to the client and to the browser, most languages ar
 question without resorting to WebAssembly, so JavaScript is the defacto place to look where
 Tensorflow.js is the best tool for the job. 
 
-<br />
-
-## Tensorflow.js { .display .display-3 .text-italic }
+## Tensorflow.js
 Tensorflow is best described on its [website](https://www.tensorflow.org/js) as 
 "an open-source end-to-end platform for creatingMachine Learning applications" where the 
 .js at the end means that it is the JavaScript implementation of this tool.
 
 To add Tensorflow.js to your project it is a simple as adding this cdn link to the top
 of an HTML file:
-```HTML
+```html
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.9.0/dist/tf.min.js"></script>
 ```
 
@@ -40,7 +35,7 @@ that you can do with Tensorflow.js we are going to stick to solving systems of e
 using its built-in gradient descent algorithms.
 
 
-###  Gradient Descent { .display .display-4 .text-italic }
+###  Gradient Descent
 To keep this post short, I'm not going to go into the nuances of gradient descent, but at a
 very high-level gradient descent is an iterative process of solving for systems of equations
 by finding solutions that minimize a specific error term. The best-case scenario is a solution 
@@ -50,15 +45,14 @@ possible.
 Wikipedia has a great introduction if you'd like to learn more: 
 [https://en.wikipedia.org/wiki/Gradient_descent](https://en.wikipedia.org/wiki/Gradient_descent)
 
-<br />
 
-## Solving a System of Equations { .display .display-3 .text-italic }
+## Solving a System of Equations 
 When talking about complex modeling and machine learning techniques it really all boils down
 to solving for systems of equations given a specific set of data with a variable number of unknowns. 
 This is why it's so important to be able to solve for the simple case.
 
 
-### Simple Example { .display .display-4 .text-italic }
+### Simple Example 
 For this example, we are going to be solving for the simple system of equations below:
 
 ```latex 
@@ -132,9 +126,6 @@ for (let i = 0; i < i + 2; i++) {
 }
 ```
 
-<br />
-
-## Final Thoughts { .display .display-3 .text-italic }
 With a little bit of extra work, Tensorflow.js can be used to solve even more complex 
 systems of equations with a variable number of unknowns that are defined by the user.
 Models can even be created on the server using Python or Node.js and moved over to 
@@ -143,6 +134,3 @@ the client once they are finalized.
 This really opens the door to the possibilities of moving away from server-side compute
 where it is not needed and can allow for a more user-friendly experience when analyzing
 and predicting values from data.
-
-</div>
-

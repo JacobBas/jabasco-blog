@@ -1,5 +1,37 @@
-<div class="container">
-  <span>&#169;</span>
-  <span>{{ .Site.Title }}</span>
-  <span>2021</span>
-</div>
+<footer>
+  <div>
+    <ul>
+      <li>
+        <a
+          href="mailto:{{ $.Site.Data.author.links.email.name }}"
+          target="_blank"
+          >{{ $.Site.Data.author.links.email.logo | markdownify }}</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://github.com/{{ $.Site.Data.author.links.github.name }}"
+          target="_blank"
+          >{{ $.Site.Data.author.links.github.logo | markdownify }}</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.linkedin.com/in/{{ $.Site.Data.author.links.linkedin.name }}"
+          target="_blank"
+          >{{ $.Site.Data.author.links.linkedin.logo | markdownify }}</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.instagram.com/{{ $.Site.Data.author.links.instagram.name }}"
+          target="_blank"
+          >{{ $.Site.Data.author.links.instagram.logo | markdownify }}</a
+        >
+      </li>
+    </ul>
+    <span
+      >{{ $.Site.Data.author.name }} Copyright © {{ $.Site.Data.site.year }}
+    </span>
+  </div>
+</footer>

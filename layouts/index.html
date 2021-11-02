@@ -1,0 +1,33 @@
+{{ define "main" }}
+<div class="container">
+  <h1>Hi, I'm Jacob Bas!</h1>
+</div>
+
+<div class="about-me">
+  <div class="container">
+    <p>
+      {{ $.Site.Data.author.about_me }}
+      <!-- Click <a href="/about">here</a> to learn more about me! -->
+    </p>
+  </div>
+</div>
+
+<div class="blog">
+  <div class="container">
+    <h2>Recent Blog Posts</h2>
+    <div class="posts">
+      {{ range (where .Site.Pages "Kind" "page") }}
+
+      <div class="post">
+        <h3>
+          <a href="{{ .File.Dir }}{{ .File.TranslationBaseName }}">{{ .Params.title }}</a>
+        </h3>
+        <span class="date">{{ time.Format "Jan 2, 2006" .Params.date }}</span>
+        <p>{{ if .Params.description }} {{ .Params.description }} {{ end }}</p>
+        <a href="{{ .File.Dir }}{{ .File.TranslationBaseName }}">Read more ...</a>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{ end }}

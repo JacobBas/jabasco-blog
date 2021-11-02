@@ -1,14 +1,10 @@
---- 
-title: "Writing Maintainable and Modular R Code" 
-date: 2021-09-29T11:49:27-07:00 
-draft: false 
-desc: "The standard library for R does
-not support modular code so by using the packages box and renv we can support
-better code management and maintainability." 
 ---
-
-<div class="blog-post">
-
+layout: post
+title:  "Writing Maintainable and Modular R Code"
+date:   2021-09-29
+description: Using the renv and box packages in R to contribute to more maintainable and modular R code in the case of larger R projects. 
+categories: 
+---
 One of the largest problems that I have with writing R code is that it does not
 come with standard tooling for creating modular code which contributes to the
 unmaintainability of larger R projects. Since R code relies heavily on
@@ -21,9 +17,7 @@ My two favorite packages for supplementing this are:
 
 My recommendation is to use these two packages with any new R project. 
 
-<br/>
-
-## renv { .display .display-3 .text-italic} 
+## renv 
 The purpose of `renv` is similar to `venv` in python, modules in go, or cargo in rust; To help with dependency
 management so projects can be more stable and reproducible.
 
@@ -32,9 +26,7 @@ keeping a running list of dependencies and their versions. It also comes with a
 nice set of tooling to help with initializing, hydrating, and editing the
 packages that are used within a specific project.
 
-<br/>
-
-## box { .display .display-3 .text-italic} 
+## box 
 The purpose of `box` is to help make
 code and the relationship between dependencies and other scripts more explicit
 by forcing the user to make deliberate use of import and export statements. As
@@ -42,9 +34,8 @@ with `renv`, `box` points R in the direction of other more standardized
 languages such as python, go, and rust by supporting strict imports and
 exports.
 
-<br/>
 
-## Example Project and Setup { .display .display-3 .text-italic} 
+## Example Project and Setup
 An example
 repository for how these tools can be used together can be found 
 [here](https://github.com/JacobBas/renv-box-example). 
@@ -56,11 +47,8 @@ There are 4 main steps to getting a project like this setup:
    `renv::record("<package>")`.
 4. Import packages and modules with `box::use()` at the top of each script.
 
-<br/>
 
-## Further Uses { .display .display-3 .text-italic} 
+## Further Uses 
 One of the most interesting
 use cases for these two packages is leveraging them along side R shiny and
 shiny modules to create applications that are highly modular and extensible.
-
-</div>
