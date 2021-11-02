@@ -4,7 +4,7 @@
     [markup.goldmark.renderer]
       unsafe = true
   [markup.highlight]
-    anchorLineNos = true
+    anchorLineNos = false
     codeFences = true
     guessSyntax = true
     hl_Lines = ''
