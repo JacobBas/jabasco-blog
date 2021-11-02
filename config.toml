@@ -10,7 +10,7 @@
     hl_Lines = ''
     lineAnchors = ''
     lineNoStart = 1
-    lineNos = true
+    lineNos = false
     lineNumbersInTable = false # this should never be set to true or else it will ruin your life
     noClasses = true
     style = 'friendly'
