@@ -207,7 +207,6 @@ footer svg {
 pre {
   padding: 0.25rem 1rem 0.25rem 0.25rem;
   overflow: auto;
-  font-size: 85%;
   line-height: 1.45;
   border-radius: 6px;
 }
@@ -216,5 +215,4 @@ pre code {
   padding: 2px 0;
   font-weight: 400;
   border-radius: 4px;
-  font-size: clamp(0.85rem, 1.5vw, 1rem);
 }
