@@ -11,7 +11,7 @@
     lineAnchors = ''
     lineNoStart = 1
     lineNos = true
-    lineNumbersInTable = false
+    lineNumbersInTable = false # this should never be set to true or else it will ruin your life
     noClasses = true
     style = 'friendly'
     tabWidth = 2

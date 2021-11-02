@@ -211,7 +211,7 @@ pre {
   border-radius: 6px;
 }
 
-code {
+.highlight pre code {
   padding: 2px 0;
   font-weight: 400;
   border-radius: 4px;
