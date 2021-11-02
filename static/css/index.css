@@ -209,6 +209,7 @@ pre {
   overflow: auto;
   line-height: 1.45;
   border-radius: 6px;
+  font-size: 0.75rem;
 }
 
 code {
