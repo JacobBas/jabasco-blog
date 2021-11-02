@@ -218,3 +218,7 @@ code {
   font-weight: 400;
   border-radius: 4px;
 }
+
+code span {
+  font-size: inherit;
+}
