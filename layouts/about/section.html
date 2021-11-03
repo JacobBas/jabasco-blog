@@ -1,12 +1,46 @@
 {{ define "main" }}
-<div class="container">
-  <div style="display: flex; justify-content: space-between; align-items: end; gap: 1rem">
-    <img class="special-img-class" src="/img/profile_img.jpg" style="width: 200px; border-radius: 10px" />
-    <p>
-      Hi, I'm Jacob Bas and I think my mustache looks cool! I like to build things and have a passion for learning and
-      sharing the information that I know!
-    </p>
+<style>
+  .grey {
+    background-color: var(--light-grey);
+    padding: 0.55rem 0;
+  }
+
+  #intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 1.25rem;
+  }
+
+  #intro img {
+    width: 200px;
+    border-radius: 10px;
+  }
+
+  @media screen and (max-width: 525px) {
+    #intro {
+      display: block;
+    }
+
+    #intro > img {
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
+  }
+</style>
+<div class="grey">
+  <div class="container">
+    <div id="intro">
+      <img class="special-img-class" src="/img/profile_img.jpg" />
+      <p>
+        Hi, I'm Jacob Bas and I think my mustache looks cool! I like to build things and have a passion for learning and
+        sharing the information that I know!
+      </p>
+    </div>
   </div>
+</div>
+<div class="container">
   <section>{{ .Content }}</section>
 </div>
 {{ end }}
