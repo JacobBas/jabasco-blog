@@ -164,7 +164,7 @@ func main() {
 ## Rust
 Rust is the most interesting language to me on this list but it is also arguably the most complex and lesser implemented language. I think the potential of Rust is its most significant factor due to all of the potential use cases given its efficiency, safety, and recent support from larger companies. While I don't think that Rust will ever replace C/C++, there is the potential to use Rust in many of the same circumstances that you would consider C/C++ because it has access to many of the same APIs, it is as efficient, and has the added factor of memory safety.
 
-The potential of Rust being used for edge compute, which is something that I would like to work on, is massive given its support by Mozilla and its ability to compile to WASM.
+The potential of Rust being used for edge compute, which is about/something that I would like to work on, is massive given its support by Mozilla and its ability to compile to WASM.
 
 Learning Rust would be hedging my bets for the future on the potential but is not a given like C/C++ and Go are.
 

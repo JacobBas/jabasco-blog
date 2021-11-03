@@ -7,7 +7,7 @@
   <div class="container">
     <p>
       {{ $.Site.Data.author.about_me }}
-      <!-- Click <a href="/about">here</a> to learn more about me! -->
+      Click <a href="/about">here</a> to learn more about me!
     </p>
   </div>
 </div>
@@ -16,8 +16,10 @@
   <div class="container">
     <h2>Recent Blog Posts</h2>
     <div class="posts">
-      {{ range (where .Site.Pages "Kind" "page") }}
-
+      {{ $v1 := where .Site.Pages "Section" "posts" }}
+      {{ $v2 := where .Site.Pages "Kind" "page" }}
+      {{ $filtered := $v1| intersect $v2 }} 
+      {{ range $filtered }}
       <div class="post">
         <h3>
           <a href="{{ .File.Dir }}{{ .File.TranslationBaseName }}">{{ .Params.title }}</a>

@@ -1,0 +1,12 @@
+{{ define "main" }}
+<div class="container">
+  <div style="display: flex; justify-content: space-between; align-items: end; gap: 1rem">
+    <img class="special-img-class" src="/img/profile_img.jpg" style="width: 200px; border-radius: 10px" />
+    <p>
+      Hi, I'm Jacob Bas and I think my mustache looks cool! I like to build things and have a passion for learning and
+      sharing the information that I know!
+    </p>
+  </div>
+  <section>{{ .Content }}</section>
+</div>
+{{ end }}

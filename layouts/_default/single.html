@@ -1,6 +1,6 @@
 {{ define "main" }}
 <div class="container">
-  <a href="/{{ .Page.Dir }}{{ .Page.TranslationBaseName }}"
+  <a href="/{{ .File.Dir }}{{ .File.TranslationBaseName }}"
     ><h1 class="display display-2 text-italic">{{ .Title }}</h1></a
   >
   <p class="text-italic">{{ time.Format "Jan 2, 2006" .Params.date }}</p>
