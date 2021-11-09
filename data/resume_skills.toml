@@ -1,29 +1,29 @@
 [skills]
-languages = [
-    "Python"
-    , "JavaScript"
-    , "R"
-    , "Go"
-    , "SQL"
-]
-tools = [
-    "Flask"
-    , "React"
-    , "TensorFlow"
-    , "GraphQL"
-    , "AWS"
-    , "Docker"
-    , "Linux"
-    , "Bash"
-    , "Git"
-    , "GitHub"
-]
-topics = [
-    "Financial Analysis"
-    , "Data Modeling"
-    , "Data Analysis"
-    , "Visualization"
-    , "Microservices"
-    , "Unit Testing"
-    , "Web Development"
-]
+    languages = [
+        "Python"
+        , "JavaScript"
+        , "R"
+        , "Go"
+        , "SQL"
+    ]
+    tools = [
+        "Flask"
+        , "React"
+        , "TensorFlow"
+        , "GraphQL"
+        , "AWS"
+        , "Docker"
+        , "Linux"
+        , "Bash"
+        , "Git"
+        , "GitHub"
+    ]
+    topics = [
+        "Financial Analysis"
+        , "Data Modeling"
+        , "Data Analysis"
+        , "Visualization"
+        , "Microservices"
+        , "Unit Testing"
+        , "Web Development"
+    ]
