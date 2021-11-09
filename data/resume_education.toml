@@ -1,12 +1,12 @@
 [education]
-[[education.institution]]
-name = "DePaul University"
-[[education.institution.cert]]
-name = "BS in Mathematics"
-end = "2015"
-start = "2019"
-desc = [
-    "Concentration in Finance"
-    , "Minor in Finance"
-    , "Minor in Data Analysis and Data Mining"
-]
+    [[education.institution]]
+        name = "DePaul University"
+        [[education.institution.cert]]
+            name = "BS in Mathematics"
+            end = "2015"
+            start = "2019"
+            desc = [
+                "Concentration in Finance"
+                , "Minor in Finance"
+                , "Minor in Data Analysis and Data Mining"
+            ]

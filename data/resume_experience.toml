@@ -1,36 +1,36 @@
 [experience]
-[[experience.company]]
-name = "Allstate Insurance"
-[[experience.company.role]]
-name = "Technical Actuary"
-start = "August 2019"
-end ="Present"
-desc =[
-    "Led the full-stack development of a web application designed for analyzing historical financial data to predict future risk. Lead to an enhanced analysis of country-wide profitability measures."
-    , "Developed and maintained a RESTful microservice infrustructure to communicate with internal and external tooling and APIs. Created a more modular view of our data process and enhanced the efficiency at which analytical software is developed."
-    , "Led the full-stack development of a web application housing the personal development information of 250+ coworkers for use at the director level."
-    , "Used statistical and financial analysis to influence state-specific and country-wide implementations."
-    , "Lead the development of trainings and documentation over the usage of technology within a business unit of 350+ peers: Python, R, JavaScript, SQL, GitHub, Docker, AWS."
-    , "Contributed to data analysis and modeling pipelines by preparing and interpreting results used within GLM, GAM, and GBM models. Communicated results to non-technical stakeholders."
-]
+    [[experience.company]]
+        name = "Allstate Insurance"
+        [[experience.company.role]]
+            name = "Technical Actuary"
+            start = "August 2019"
+            end ="Present"
+            desc =[
+                "Led the full-stack development of a web application designed for analyzing historical financial data to predict future risk. Lead to an enhanced analysis of country-wide profitability measures."
+                , "Developed and maintained a RESTful microservice infrustructure to communicate with internal and external tooling and APIs. Created a more modular view of our data process and enhanced the efficiency at which analytical software is developed."
+                , "Led the full-stack development of a web application housing the personal development information of 250+ coworkers for use at the director level."
+                , "Used statistical and financial analysis to influence state-specific and country-wide implementations."
+                , "Lead the development of trainings and documentation over the usage of technology within a business unit of 350+ peers: Python, R, JavaScript, SQL, GitHub, Docker, AWS."
+                , "Contributed to data analysis and modeling pipelines by preparing and interpreting results used within GLM, GAM, and GBM models. Communicated results to non-technical stakeholders."
+            ]
 
-[[experience.company]]
-name = "Aon"
-[[experience.company.role]]
-name = "Actuarial Intern"
-start = "September 2018"
-end = "May 2019"
-desc = [
-    "Completed the analysis of long-term financial data using stochastic and deterministic analsyis to assess the risk and viability of financial decisions."
-    , "Communicated results of financial analysis to external clients."
-]
+    [[experience.company]]
+        name = "Aon"
+        [[experience.company.role]]
+            name = "Actuarial Intern"
+            start = "September 2018"
+            end = "May 2019"
+            desc = [
+                "Completed the analysis of long-term financial data using stochastic and deterministic analsyis to assess the risk and viability of financial decisions."
+                , "Communicated results of financial analysis to external clients."
+            ]
 
-[[experience.company]]
-name = "DePaul University"
-[[experience.company.role]]
-name = "Actuarial Intern"
-start = "March 2019"
-end = "May 2019"
-desc = [
-    "Communicated a detailed understanding of advanced statistical concepts to a group of 15+ students."
-]
+    [[experience.company]]
+    name = "DePaul University"
+        [[experience.company.role]]
+            name = "Actuarial Intern"
+            start = "March 2019"
+            end = "May 2019"
+            desc = [
+                "Communicated a detailed understanding of advanced statistical concepts to a group of 15+ students."
+            ]
