@@ -83,8 +83,22 @@ header {
   margin: 0.5rem 1.5rem;
   display: flex;
   justify-content: space-between;
-  /* justify-content: center; */
   align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    margin: 0.5rem 1.5rem;
+    display: block;
+    text-align: center;
+  }
+
+  header nav ul {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 header a {
@@ -102,11 +116,8 @@ header nav ul {
   list-style: none;
   display: flex;
   align-items: center;
-  font-size: 1.05rem;
-}
-
-header nav ul li {
-  margin-left: 2.5rem;
+  font-size: 1rem;
+  gap: 2rem;
 }
 
 /* MAIN */
@@ -178,7 +189,7 @@ footer div {
 }
 
 footer ul {
-  margin: 0 0 0.75rem 0;
+  margin: 0;
   padding: 0;
   list-style: none;
   display: flex;
