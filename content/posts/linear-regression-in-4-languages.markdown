@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Least Squares Regression in 4 Languages"
+title:  "Least Squares Regression in Python, C++, Go, and Rust"
 date:   2021-11-01
 description: Calculating a least squares linear regression in C/C++, Rust, Go, and Python. 
 categories: 
