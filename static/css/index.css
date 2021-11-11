@@ -215,7 +215,22 @@ footer svg {
 .resume.container {
   margin: 0 auto;
   width: 90%;
-  max-width: 60rem;
+  max-width: 75rem;
+}
+
+.resume .main-content {
+  display: grid;
+  grid-template-columns: 65% auto;
+  grid-template-areas: "left-col right-col";
+  gap: 2rem;
+}
+
+.right-col {
+  grid-area: right-col;
+}
+
+.left-col {
+  grid: left-col;
 }
 
 .resume h1,
@@ -256,6 +271,17 @@ footer svg {
   margin: 0 1.5rem 0 0;
 }
 
+.resume #contact ul {
+  margin: 0;
+  padding: 0;
+}
+
+.resume #contact ul li {
+  display: flex;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
 /* CODE */
 .hightlight {
   overflow: auto !important;
@@ -275,4 +301,15 @@ pre {
   font-weight: 400;
   border-radius: 4px;
   font-size: 0.85rem;
+}
+
+/* PRINTING */
+@media print {
+  header {
+    display: none;
+  }
+
+  footer {
+    display: none;
+  }
 }

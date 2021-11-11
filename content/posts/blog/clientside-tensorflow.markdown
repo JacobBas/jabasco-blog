@@ -2,7 +2,8 @@
 layout: post
 title:  "Using TensorFlow.js for Client Side Compute"
 date:   2021-09-30
-categories: 
+description: Calculating a least squares linear regression in C/C++, Rust, Go, and Python. 
+draft: false
 ---
 ## Intro
 At my current job, one of the largest problems that we face is the problem of limited compute
