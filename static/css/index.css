@@ -225,6 +225,12 @@ footer svg {
   gap: 2rem;
 }
 
+@media screen and (max-width: 715px) {
+  .resume .main-content {
+    display: block;
+  }
+}
+
 .right-col {
   grid-area: right-col;
 }
