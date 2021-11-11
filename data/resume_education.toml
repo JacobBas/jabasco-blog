@@ -3,8 +3,8 @@
         name = "DePaul University"
         [[education.institution.cert]]
             name = "BS in Mathematics"
-            end = "2015"
-            start = "2019"
+            start = "2015"
+            end = "2019"
             desc = [
                 "Concentration in Finance"
                 , "Minor in Finance"
