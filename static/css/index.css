@@ -268,6 +268,10 @@ footer svg {
   margin-bottom: 3.5rem;
 }
 
+.resume ul {
+  padding-left: 25px;
+}
+
 .resume .skill-section ul {
   display: flex;
   flex-wrap: wrap;
@@ -285,7 +289,18 @@ footer svg {
 .resume #contact ul li {
   display: flex;
   margin-bottom: 1rem;
+  margin-left: 1rem;
   gap: 1rem;
+}
+
+.resume #experience .desc ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 0.55rem 0;
+}
+
+.resume #experience .desc ul li {
+  margin: 0 1.5rem 0 0;
 }
 
 /* CODE */
@@ -317,5 +332,18 @@ pre {
 
   footer {
     display: none;
+  }
+
+  .resume {
+    font-size: 1.1rem;
+  }
+
+  .container {
+    max-width: 100rem;
+  }
+
+  .resume.container {
+    width: 93%;
+    max-width: 100rem;
   }
 }
