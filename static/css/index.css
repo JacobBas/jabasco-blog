@@ -275,7 +275,19 @@ footer svg {
 .resume .skill-section ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 0 1.5rem;
+  gap: 0 2.25rem;
+}
+
+.resume .skill-section ul li {
+  list-style-type: none;
+  position: relative;
+}
+
+.resume .skill-section ul li::before {
+  position: absolute;
+  content: url(/svg/dots.svg);
+  top: 0.3rem;
+  left: -1.6rem;
 }
 
 .resume #contact ul {
@@ -294,7 +306,22 @@ footer svg {
   display: flex;
   flex-wrap: wrap;
   margin: 0 0 0.55rem 0;
-  gap: 0 1.5rem;
+  gap: 0 2.25rem;
+  align-items: center;
+  justify-content: left;
+}
+
+.resume #experience .desc ul li {
+  list-style-type: none;
+  position: relative;
+  font-style: italic;
+}
+
+.resume #experience .desc ul li::before {
+  position: absolute;
+  content: url(/svg/bullet.svg);
+  top: 0.17rem;
+  left: -1.2rem;
 }
 
 /* CODE */
