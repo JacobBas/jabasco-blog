@@ -275,10 +275,7 @@ footer svg {
 .resume .skill-section ul {
   display: flex;
   flex-wrap: wrap;
-}
-
-.resume .skill-section ul li {
-  margin: 0 1.5rem 0 0;
+  gap: 0 1.5rem;
 }
 
 .resume #contact ul {
@@ -297,10 +294,7 @@ footer svg {
   display: flex;
   flex-wrap: wrap;
   margin: 0 0 0.55rem 0;
-}
-
-.resume #experience .desc ul li {
-  margin: 0 1.5rem 0 0;
+  gap: 0 1.5rem;
 }
 
 /* CODE */
