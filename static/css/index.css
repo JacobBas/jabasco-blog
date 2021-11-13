@@ -286,7 +286,7 @@ footer svg {
 .resume .skill-section ul li::before {
   position: absolute;
   content: url(/svg/dots.svg);
-  top: 0.3rem;
+  top: 4.6px;
   left: -1.6rem;
 }
 
@@ -320,8 +320,8 @@ footer svg {
 .resume #experience .desc ul li::before {
   position: absolute;
   content: url(/svg/bullet.svg);
-  top: 0.17rem;
-  left: -1.2rem;
+  top: 2.72px;
+  left: -18.5px;
 }
 
 /* CODE */
