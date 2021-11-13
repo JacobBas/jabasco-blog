@@ -7,8 +7,7 @@
             end = "2019"
             desc = [
                 "Concentration in Finance"
-                , "Minor in Finance"
-                , "Minor in Data Analysis and Data Mining"
+                , "Minor in Finance and Data Analysis and Mining"
             ]
     [[education.institution]]
         name = "Other"
