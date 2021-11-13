@@ -10,3 +10,13 @@
                 , "Minor in Finance"
                 , "Minor in Data Analysis and Data Mining"
             ]
+    [[education.institution]]
+        name = "Other"
+        [[education.institution.cert]]
+            name = "Professional Exams"
+            desc = [
+                "Exam P (Probability and Statistics)"
+                , "Exam MAS1 (Modern Actuarial Statistics)"
+                , "Exam FM (Financial Mathematics)"
+                , "Exam IFM (Investments and Financial Markets)"
+            ]

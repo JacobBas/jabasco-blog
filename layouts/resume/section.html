@@ -64,26 +64,6 @@
           </ul>
         </div>
       </div>
-
-      <div id="education" class="section">
-        <h2>Education</h2>
-        {{ range $.Site.Data.resume_education.education.institution }}
-        <div class="institution">
-          <h3>{{ .name }}</h3>
-          <div class="cert">
-            {{ range .cert }}
-            <h4>{{ .name }}</h4>
-            <p>{{ .start }}-{{ .end }}</p>
-            <ul class="desc">
-              {{ range .desc }}
-              <li>{{ . }}</li>
-              {{ end }}
-            </ul>
-            {{ end }}
-          </div>
-        </div>
-        {{ end }}
-      </div>
     </div>
 
     <div class="left-col">
@@ -106,6 +86,28 @@
                   {{ end }}
                 </ul>
               </li>
+              {{ end }}
+            </ul>
+            {{ end }}
+          </div>
+        </div>
+        {{ end }}
+      </div>
+
+      <div id="education" class="section">
+        <h2>Education & Certifications</h2>
+        {{ range $.Site.Data.resume_education.education.institution }}
+        <div class="institution">
+          <h3>{{ .name }}</h3>
+          <div class="cert">
+            {{ range .cert }}
+            <h4>{{ .name }}</h4>
+            {{ if .start }}
+            <p>{{ .start }}-{{ .end }}</p>
+            {{ end }}
+            <ul class="desc">
+              {{ range .desc }}
+              <li>{{ . }}</li>
               {{ end }}
             </ul>
             {{ end }}
