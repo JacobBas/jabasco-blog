@@ -11,12 +11,13 @@
 
 
 <div class="blog">
+  {{ $v1 := where .Site.Pages "Section" "posts" }} 
+  {{ $v2 := where .Site.Pages "Kind" "page" }} 
+  {{ $filtered := $v1| intersect $v2 }} 
+
   <div class="container">
     <h2>Recent Blog Posts</h2>
     <div class="posts">
-      {{ $v1 := where .Site.Pages "Section" "posts" }} 
-      {{ $v2 := where .Site.Pages "Kind" "page" }} 
-      {{ $filtered := $v1| intersect $v2 }} 
       {{ range $filtered }}
         {{ $elements := index (split .CurrentSection "/") }}
         {{ $section := index $elements (sub (len $elements) 2) }}
@@ -37,9 +38,6 @@
   <div class="container">
     <h2>Public Learning</h2>
     <div class="posts">
-      {{ $v1 := where .Site.Pages "Section" "posts" }} 
-      {{ $v2 := where .Site.Pages "Kind" "page" }} 
-      {{ $filtered := $v1| intersect $v2 }} 
       {{ range $filtered }}
         {{ $elements := index (split .CurrentSection "/") }}
         {{ $section := index $elements (sub (len $elements) 2) }}
@@ -56,5 +54,6 @@
       {{ end }}
     </div>
   </div>
+  
 </div>
 {{ end }}
