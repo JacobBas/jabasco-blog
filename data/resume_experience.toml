@@ -1,10 +1,17 @@
 [experience]
     [[experience.company]]
-        name = "Allstate Insurance"
+        name = "Coalition Inc."
+        [[experience.company.role]]
+            name = "Software Engineer"
+            start = "January 2022"
+            end ="Present"
+
+    [[experience.company]]
+        name = "Allstate Insurance Company"
         [[experience.company.role]]
             name = "Technical Actuary"
             start = "August 2019"
-            end ="Present"
+            end ="January 2022"
             [[experience.company.role.bullet]]
                 desc = """Led the full-stack development of a web application designed for analyzing 
                 historical financial data to predict future risk. Lead to an enhanced analysis 
@@ -36,12 +43,12 @@
                     "Bootstrap"
                 ]
             [[experience.company.role.bullet]]
-                desc = """Used statistical and financial analysis to influence state-specific and 
-                country-wide implementations."""
-                items = []
-            [[experience.company.role.bullet]]
                 desc = """Lead the development of trainings and documentation over the usage of technology 
                 within a business unit of 350+ peers: Python, R, JavaScript, SQL, GitHub, Docker, AWS."""
+                items = []
+            [[experience.company.role.bullet]]
+                desc = """Used statistical and financial analysis to influence state-specific and 
+                country-wide implementations."""
                 items = []
             [[experience.company.role.bullet]]
                 desc = """Contributed to data analysis and modeling pipelines by preparing and interpreting 
@@ -49,27 +56,27 @@
                 stakeholders."""
                 items = []
 
-    [[experience.company]]
-        name = "Aon"
-        [[experience.company.role]]
-            name = "Actuarial Intern"
-            start = "September 2018"
-            end = "May 2019"
-            [[experience.company.role.bullet]]
-                desc = """Completed the analysis of long-term financial data using stochastic and deterministic 
-                analsyis to assess the risk and viability of financial decisions."""
-                items = []
-            [[experience.company.role.bullet]]
-                desc = """Communicated results of financial analysis to external clients."""
-                items = []
+    # [[experience.company]]
+    #     name = "Aon"
+    #     [[experience.company.role]]
+    #         name = "Actuarial Intern"
+    #         start = "September 2018"
+    #         end = "May 2019"
+    #         [[experience.company.role.bullet]]
+    #             desc = """Completed the analysis of long-term financial data using stochastic and deterministic 
+    #             analsyis to assess the risk and viability of financial decisions."""
+    #             items = []
+    #         [[experience.company.role.bullet]]
+    #             desc = """Communicated results of financial analysis to external clients."""
+    #             items = []
 
-    [[experience.company]]
-    name = "DePaul University"
-        [[experience.company.role]]
-            name = "Mathematics Teaching Assistant"
-            start = "March 2019"
-            end = "May 2019"
-            [[experience.company.role.bullet]]
-                desc = """Communicated a detailed understanding of advanced statistical concepts to a group 
-                of 15+ students."""
-                items = []
+    # [[experience.company]]
+    # name = "DePaul University"
+    #     [[experience.company.role]]
+    #         name = "Mathematics Teaching Assistant"
+    #         start = "March 2019"
+    #         end = "May 2019"
+    #         [[experience.company.role.bullet]]
+    #             desc = """Communicated a detailed understanding of advanced statistical concepts to a group 
+    #             of 15+ students."""
+    #             items = []
