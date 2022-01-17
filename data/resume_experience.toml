@@ -11,7 +11,7 @@
         [[experience.company.role]]
             name = "Technical Actuary"
             start = "August 2019"
-            end ="Present"
+            end ="January 2022"
             [[experience.company.role.bullet]]
                 desc = """Led the full-stack development of a web application designed for analyzing 
                 historical financial data to predict future risk. Lead to an enhanced analysis 
