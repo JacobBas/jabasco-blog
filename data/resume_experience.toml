@@ -6,10 +6,12 @@
             start = "January 2022"
             end ="Present"
             [[experience.company.role.bullet]]
-                desc = """Led the Underwriting Engineering team in the development of new insurance
-                products within the US, UK, and Canada. Collaborated and communicated cross functionally
-                with Engineering, Product, and Business teams to understand product requirements and 
-                develop solutions."""
+                desc = """Led the Underwriting Engineering team in the development of new 
+                insurance products for global markets. Developed core cyber insurance pricing 
+                logic in collaboration with actuaries, data scientists, and underwriters. 
+                Enabled cross-functional development and deployment of new pricing models 
+                resulting in increased GWP and expansion into markets like the US, UK, Canada, 
+                and beyond."""
                 items = [
                     "People Leadership",
                     "Thought Leadership",
@@ -18,11 +20,11 @@
                     "Delegation",
                 ]
             [[experience.company.role.bullet]]
-                desc = """Led the development of the core pricing service for our cyber insurance 
-                product to enable the company to write business worldwide. Designed and implemented
-                a custom internal framework for pricing that is used to price all of our cyber 
-                insurance products. Maintained compatibility with our legacy codebase to allow for
-                minimum disruption to our existing business."""
+                desc = """Conceptualized and developed a modular, layer-based framework for 
+                core rating models. Ensured distinct entry points for business users and simplified 
+                the understanding of models for non-technical users. Additionally, facilitated 
+                underwriters with an abstracted post-processing flow to comprehend model output 
+                data more efficiently."""
                 items = [
                     "Independent Work Contribution",
                     "Thought Leadership",
@@ -31,9 +33,10 @@
                     "PostgreSQL",
                 ]
             [[experience.company.role.bullet]]
-                desc = """Designed and led the development and implementation of an orchestration
-                service that leveraged Kakfa events and queues to create a more bullet proof lifecycle 
-                flow of our core insurance objects."""
+                desc = """Designed and implemented an orchestration service, leveraging Kafka, 
+                for improved service uptime and modularity between evaluation processes. 
+                Contributed to the initiation of event-based workflows and ensured robust retry 
+                mechanisms for lifecycle flows and consistent data handling."""
                 items = [
                     "People Leadership",
                     "Thought Leadership",
@@ -41,17 +44,51 @@
                     "Kafka",
                 ]
             [[experience.company.role.bullet]]
-                desc = """Managed on-call responsibilities which included on-call triage and 
-                incident management. Have led and contributed to our internal Post Mortem review 
-                process for identifying core issues and mitigating future incidents."""
+                desc = """Introduced a team Kaizen process for continuous improvement. Facilitated 
+                open feedback discussions to refine on-call processes, enhance communication 
+                with business partners, and foster a collaborative engineering environment."""
+                items = [
+                    "Process Improvement",
+                    "Feedback Mechanisms",
+                ]
+            [[experience.company.role.bullet]]
+                desc = """Significantly contributed to design documentation and company-wide 
+                initiatives for technical debt resolution and product requirements refinement. 
+                Facilitated faster development processes and bolstered company growth."""
                 items = []
             [[experience.company.role.bullet]]
-                desc = """Conducted interviews for L1, L2, and L3 engineers for all open engineering 
-                positions at the company. Conducted interviews for Engineering Managers for my
-                direct team."""
+                desc = """Worked closely with front-end, underwriting, and product teams to 
+                enhance interface design for analytical data comprehension from pricing models. 
+                Developed algorithms to aggregate and simplify insurance pricing data for 
+                transparent customer interactions, especially in the renewals segment, ensuring 
+                sustained profitability and strong broker relationships."""
+                items = [
+                    "Collaboration",
+                    "Algorithm Development",
+                ]
+            [[experience.company.role.bullet]]
+                desc = """Created comprehensive training modules and technical documentation 
+                for onboarding technical and non-technical teams. Engaged in presentations 
+                and discussions to elucidate technical analyses and ensure a holistic understanding 
+                of pricing model outputs."""
+                items = [
+                    "Training & Development",
+                    "Documentation",
+                    "Presentations",
+                ]
+            [[experience.company.role.bullet]]
+                desc = """Managed on-call responsibilities, including triage and incident 
+                management. Spearheaded the internal post-mortem review process to identify 
+                core issues and implement preventive measures."""
                 items = []
             [[experience.company.role.bullet]]
-                desc = """Helped to defined and maintained SLO's and SLA's for a group of microservices."""
+                desc = """Conducted interviews for varying engineering levels and engineering 
+                managers for my direct team. Ensured the recruitment of top-tier talent to drive 
+                the company's technical vision."""
+                items = []
+            [[experience.company.role.bullet]]
+                desc = """Defined and monitored SLOs and SLAs for a suite of microservices, 
+                ensuring high service quality and responsiveness."""
                 items = []
 
     [[experience.company]]
