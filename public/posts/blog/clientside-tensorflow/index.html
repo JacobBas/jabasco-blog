@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MRX6LR2ESY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-MRX6LR2ESY");
+    </script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jabasco.dev |  Using TensorFlow.js for Client Side Compute</title>
+    <link rel="stylesheet" href="/css/index.css" />
+  </head>
+  <body>
+    <header>
+  <a href="/">
+    <h2 class="title">jabasco.dev</h2>
+  </a>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/resume/">Resume</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main>
+<div class="container">
+  <a href="/posts/blog/clientside-tensorflow"
+    ><h1 class="display display-2 text-italic">Using TensorFlow.js for Client Side Compute</h1></a
+  >
+  <p class="text-italic">Sep 30, 2021</p>
+  <aside class="blog-post table-of-contents">
+    <h2 class="display display-3 text-italic">Table of Contents</h2>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#intro">Intro</a></li>
+    <li><a href="#tensorflowjs">Tensorflow.js</a>
+      <ul>
+        <li><a href="#gradient-descent">Gradient Descent</a></li>
+      </ul>
+    </li>
+    <li><a href="#solving-a-system-of-equations">Solving a System of Equations</a>
+      <ul>
+        <li><a href="#simple-example">Simple Example</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </aside>
+  <section><h2 id="intro">Intro</h2>
+<p>At my current job, one of the largest problems that we face is the problem of limited compute
+power for our analytical web applications or the server&rsquo;s ability to handle large computational
+loads. This causes all sorts of problems such as slow compute times, server outages, and
+unintended effects of slowing down the workflows of peers.</p>
+<p>The easiest solution to this is to push the computational load from the server onto the client
+where the server can act as more of a transport mechanism for the data. This solution has one
+very obvious assumption to it and that&rsquo;s that all users will have similarly powerful machines
+which is an appropriate assumption for the internal tooling that I&rsquo;m creating.</p>
+<p>With pushing these processes to the client and to the browser, most languages are out of the
+question without resorting to WebAssembly, so JavaScript is the defacto place to look where
+Tensorflow.js is the best tool for the job.</p>
+<h2 id="tensorflowjs">Tensorflow.js</h2>
+<p>Tensorflow is best described on its <a href="https://www.tensorflow.org/js">website</a> as
+&ldquo;an open-source end-to-end platform for creatingMachine Learning applications&rdquo; where the
+.js at the end means that it is the JavaScript implementation of this tool.</p>
+<p>To add Tensorflow.js to your project it is a simple as adding this cdn link to the top
+of an HTML file:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#062873;font-weight:bold">script</span> <span style="color:#4070a0">src</span><span style="color:#666">=</span><span style="color:#4070a0">&#34;https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.9.0/dist/tf.min.js&#34;</span>&gt;&lt;/<span style="color:#062873;font-weight:bold">script</span>&gt;
+</span></span></code></pre></div><p>While there are a ton of <a href="https://www.tensorflow.org/js/demos">awesome and complex things</a>
+that you can do with Tensorflow.js we are going to stick to solving systems of equations
+using its built-in gradient descent algorithms.</p>
+<h3 id="gradient-descent">Gradient Descent</h3>
+<p>To keep this post short, I&rsquo;m not going to go into the nuances of gradient descent, but at a
+very high-level gradient descent is an iterative process of solving for systems of equations
+by finding solutions that minimize a specific error term. The best-case scenario is a solution
+where the error term is equal to zero, but in most cases with real-world data that is not
+possible.</p>
+<p>Wikipedia has a great introduction if you&rsquo;d like to learn more:
+<a href="https://en.wikipedia.org/wiki/Gradient_descent">https://en.wikipedia.org/wiki/Gradient_descent</a></p>
+<h2 id="solving-a-system-of-equations">Solving a System of Equations</h2>
+<p>When talking about complex modeling and machine learning techniques it really all boils down
+to solving for systems of equations given a specific set of data with a variable number of unknowns.
+This is why it&rsquo;s so important to be able to solve for the simple case.</p>
+<h3 id="simple-example">Simple Example</h3>
+<p>For this example, we are going to be solving for the simple system of equations below:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>24x   + 5y  - 10z = 100
+</span></span><span style="display:flex;"><span>-100x + 0y  + 12z = 57
+</span></span><span style="display:flex;"><span>99x   - 92y + 12z = 88
+</span></span></code></pre></div><p>To start, we need to define some important objects for solving this system:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// initialize the tensors containing the known values
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">let</span> a <span style="color:#666">=</span> tf.tensor([<span style="color:#40a070">24</span>, <span style="color:#666">-</span><span style="color:#40a070">100</span>, <span style="color:#40a070">99</span>], [<span style="color:#40a070">3</span>, <span style="color:#40a070">1</span>]);
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">let</span> b <span style="color:#666">=</span> tf.tensor([<span style="color:#40a070">5</span>, <span style="color:#40a070">0</span>, <span style="color:#40a070">92</span>], [<span style="color:#40a070">3</span>, <span style="color:#40a070">1</span>]);
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">let</span> c <span style="color:#666">=</span> tf.tensor([<span style="color:#40a070">10</span>, <span style="color:#40a070">12</span>, <span style="color:#40a070">12</span>], [<span style="color:#40a070">3</span>, <span style="color:#40a070">1</span>]);
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">let</span> d <span style="color:#666">=</span> tf.tensor([<span style="color:#40a070">100</span>, <span style="color:#40a070">57</span>, <span style="color:#40a070">88</span>], [<span style="color:#40a070">3</span>, <span style="color:#40a070">1</span>]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// initialize the unknown varibles to solve for
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">let</span> x <span style="color:#666">=</span> tf.variable(tf.tensor(<span style="color:#40a070">1</span>]));
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">let</span> y <span style="color:#666">=</span> tf.variable(tf.tensor(<span style="color:#666">-</span><span style="color:#40a070">1</span>]));
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">let</span> z <span style="color:#666">=</span> tf.variable(tf.tensor(<span style="color:#40a070">1</span>]));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// create the function from the tensors and unknowns
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">const</span> func <span style="color:#666">=</span> (a, b, c) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">return</span> a.mul(x).add(b.mul(y)).add(c.mul(z));
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// define our error function to optimize
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// we are using the mean squared error
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">const</span> mse <span style="color:#666">=</span> (d, d_hat) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">return</span> d_hat.sub(d).square().mean();
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>Once we have initialized these objects, we can run the gradient descent using the selected
+optimizer:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// initializing the learn rate and optimization functions
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">const</span> learnRate <span style="color:#666">=</span> <span style="color:#40a070">0.1</span>;
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">const</span> optimizer <span style="color:#666">=</span> tf.train.adam(learnRate);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic">// running the gradient descent on the system of equations
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#007020;font-weight:bold">for</span> (<span style="color:#007020;font-weight:bold">let</span> i <span style="color:#666">=</span> <span style="color:#40a070">0</span>; i <span style="color:#666">&lt;</span> i <span style="color:#666">+</span> <span style="color:#40a070">2</span>; i<span style="color:#666">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic">// initializing our error term and significance
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#007020;font-weight:bold">let</span> error_rounded;
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">let</span> sigfigs <span style="color:#666">=</span> <span style="color:#40a070">10000</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic">// running the optimizer for our variables
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    optimizer.minimize(() =&gt; {
+</span></span><span style="display:flex;"><span>        error <span style="color:#666">=</span> mse(d, func(a, b, c));
+</span></span><span style="display:flex;"><span>        error_rounded <span style="color:#666">=</span> <span style="color:#007020">Math</span>.round(error.dataSync()[<span style="color:#40a070">0</span>] <span style="color:#666">*</span> sigfigs) <span style="color:#666">/</span> sigfigs;
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">return</span> error;
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic">// logging iteration milestones
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#007020;font-weight:bold">if</span> (i <span style="color:#666">%</span> <span style="color:#40a070">100</span> <span style="color:#666">===</span> <span style="color:#40a070">0</span>) {
+</span></span><span style="display:flex;"><span>        console.log(<span style="color:#4070a0">`iterations: </span><span style="color:#70a0d0">${</span>i<span style="color:#70a0d0">}</span><span style="color:#4070a0">, error: </span><span style="color:#70a0d0">${</span>error_rounded<span style="color:#70a0d0">}</span><span style="color:#4070a0">`</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic">// breaking if our error is zero to a specific significance
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#60a0b0;font-style:italic">// or the iteration count is 5000 iterations
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#007020;font-weight:bold">if</span> (error_rounded <span style="color:#666">===</span> <span style="color:#40a070">0</span> <span style="color:#666">||</span> <span style="color:#666">!</span>error_rounded <span style="color:#666">||</span> i <span style="color:#666">===</span> <span style="color:#40a070">5000</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">let</span> final_message <span style="color:#666">=</span> <span style="color:#4070a0">``</span>;
+</span></span><span style="display:flex;"><span>        final_message <span style="color:#666">+=</span> <span style="color:#4070a0">`iterations: </span><span style="color:#70a0d0">${</span>i<span style="color:#70a0d0">}</span><span style="color:#4070a0"> \n`</span>;
+</span></span><span style="display:flex;"><span>        final_message <span style="color:#666">+=</span> <span style="color:#4070a0">`error term: </span><span style="color:#70a0d0">${</span>error_rounded<span style="color:#70a0d0">}</span><span style="color:#4070a0"> \n`</span>;
+</span></span><span style="display:flex;"><span>        final_message <span style="color:#666">+=</span> <span style="color:#4070a0">`formula: </span><span style="color:#70a0d0">${</span>x.dataSync()<span style="color:#70a0d0">}</span><span style="color:#4070a0">*a + </span><span style="color:#70a0d0">${</span>y.dataSync()<span style="color:#70a0d0">}</span><span style="color:#4070a0">*b + </span><span style="color:#70a0d0">${</span>z.dataSync()<span style="color:#70a0d0">}</span><span style="color:#4070a0">*c = d`</span>;
+</span></span><span style="display:flex;"><span>        console.log(final_message);
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">break</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>With a little bit of extra work, Tensorflow.js can be used to solve even more complex
+systems of equations with a variable number of unknowns that are defined by the user.
+Models can even be created on the server using Python or Node.js and moved over to
+the client once they are finalized.</p>
+<p>This really opens the door to the possibilities of moving away from server-side compute
+where it is not needed and can allow for a more user-friendly experience when analyzing
+and predicting values from data.</p>
+</section>
+</div>
+</main>
+    <footer>
+  <div>
+    <ul>
+      <li>
+        <a
+          href="mailto:basjacob17@gmail.com"
+          target="_blank"
+          ><p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16"><path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/></svg></p>
+</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://github.com/JacobBas"
+          target="_blank"
+          ><p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></p>
+</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.linkedin.com/in/jacob-bas-52019714b"
+          target="_blank"
+          ><p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg></p>
+</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.instagram.com/jacobthebas"
+          target="_blank"
+          ><p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/></svg></p>
+</a
+        >
+      </li>
+    </ul>
+    <span
+      >Jacob Bas Copyright © 2022
+    </span>
+  </div>
+</footer>
+
+  </body>
+</html>

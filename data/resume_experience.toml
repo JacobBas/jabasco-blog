@@ -5,6 +5,54 @@
             name = "Software Engineer"
             start = "January 2022"
             end ="Present"
+            [[experience.company.role.bullet]]
+                desc = """Led the Underwriting Engineering team in the development of new insurance
+                products within the US, UK, and Canada. Collaborated and communicated cross functionally
+                with Engineering, Product, and Business teams to understand product requirements and 
+                develop solutions."""
+                items = [
+                    "People Leadership",
+                    "Thought Leadership",
+                    "Jira",
+                    "Communications",
+                    "Delegation",
+                ]
+            [[experience.company.role.bullet]]
+                desc = """Led the development of the core pricing service for our cyber insurance 
+                product to enable the company to write business worldwide. Designed and implemented
+                a custom internal framework for pricing that is used to price all of our cyber 
+                insurance products. Maintained compatibility with our legacy codebase to allow for
+                minimum disruption to our existing business."""
+                items = [
+                    "Independent Work Contribution",
+                    "Thought Leadership",
+                    "Python",
+                    "Flask",
+                    "PostgreSQL",
+                ]
+            [[experience.company.role.bullet]]
+                desc = """Designed and led the development and implementation of an orchestration
+                service that leveraged Kakfa events and queues to create a more bullet proof lifecycle 
+                flow of our core insurance objects."""
+                items = [
+                    "People Leadership",
+                    "Thought Leadership",
+                    "Go",
+                    "Kafka",
+                ]
+            [[experience.company.role.bullet]]
+                desc = """Managed on-call responsibilities which included on-call triage and 
+                incident management. Have led and contributed to our internal Post Mortem review 
+                process for identifying core issues and mitigating future incidents."""
+                items = []
+            [[experience.company.role.bullet]]
+                desc = """Conducted interviews for L1, L2, and L3 engineers for all open engineering 
+                positions at the company. Conducted interviews for Engineering Managers for my
+                direct team."""
+                items = []
+            [[experience.company.role.bullet]]
+                desc = """Helped to defined and maintained SLO's and SLA's for a group of microservices."""
+                items = []
 
     [[experience.company]]
         name = "Allstate Insurance"

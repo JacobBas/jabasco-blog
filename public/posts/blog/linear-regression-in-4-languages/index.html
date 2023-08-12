@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MRX6LR2ESY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-MRX6LR2ESY");
+    </script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jabasco.dev |  Least Squares Regression in Python, C&#43;&#43;, Go, and Rust</title>
+    <link rel="stylesheet" href="/css/index.css" />
+  </head>
+  <body>
+    <header>
+  <a href="/">
+    <h2 class="title">jabasco.dev</h2>
+  </a>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/resume/">Resume</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main>
+<div class="container">
+  <a href="/posts/blog/linear-regression-in-4-languages"
+    ><h1 class="display display-2 text-italic">Least Squares Regression in Python, C&#43;&#43;, Go, and Rust</h1></a
+  >
+  <p class="text-italic">Nov 1, 2021</p>
+  <aside class="blog-post table-of-contents">
+    <h2 class="display display-3 text-italic">Table of Contents</h2>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#intro">Intro</a></li>
+    <li><a href="#python">Python</a></li>
+    <li><a href="#cc">C/C++</a></li>
+    <li><a href="#go">Go</a></li>
+    <li><a href="#rust">Rust</a></li>
+  </ul>
+</nav>
+  </aside>
+  <section><h2 id="intro">Intro</h2>
+<p>One thing that I have struggled with in the past year is figuring out which language I should spend my time learning. In my current work, I primarily use Python, JavaScript, and R so I&rsquo;ve naturally built up a proficiency using these languages, but my toolbox is missing a statically typed, compiled language that I can fall back on.</p>
+<p>I&rsquo;ve been in this loop of attempting to learn C/C++, Rust, and Go but have struggled to develop a deeper understanding of the languages due to the constant context switching. They all have strengths, weaknesses, and niches that they fill, but at the same time, they are robust enough to complete almost any project.</p>
+<p>To try and get at the root of what I enjoy coding in the most, below I&rsquo;ve completed a simple least-squares linear regression in C/C++, Go, Python, and Rust to weed out the differences and similarities in the languages.</p>
+<h2 id="python">Python</h2>
+<p>Python has been added to this list as a baseline since it is the language that I am currently most comfortable with. I&rsquo;m not going to go too far into detail, but I don&rsquo;t see myself dropping this language any time soon.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">typing</span> <span style="color:#007020;font-weight:bold">import</span> List
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">linearRegression</span>(beta: List[<span style="color:#007020">float</span>], x: List[<span style="color:#007020">float</span>], y: List[<span style="color:#007020">float</span>]) <span style="color:#666">-&gt;</span> List[<span style="color:#007020">float</span>]:
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic"># finding the means of the x and y arrays</span>
+</span></span><span style="display:flex;"><span>    muX <span style="color:#666">=</span> <span style="color:#007020">sum</span>(x) <span style="color:#666">/</span> <span style="color:#007020">len</span>(x)
+</span></span><span style="display:flex;"><span>    muY <span style="color:#666">=</span> <span style="color:#007020">sum</span>(y) <span style="color:#666">/</span> <span style="color:#007020">len</span>(y)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic"># finding the sum of squares using list comprehensions</span>
+</span></span><span style="display:flex;"><span>    ssX <span style="color:#666">=</span> <span style="color:#007020">sum</span>([(i<span style="color:#666">-</span>muX) <span style="color:#666">**</span> <span style="color:#40a070">2</span> <span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> x])
+</span></span><span style="display:flex;"><span>    sXY <span style="color:#666">=</span> <span style="color:#007020">sum</span>([(x[i]<span style="color:#666">-</span>muX) <span style="color:#666">*</span> (y[i]<span style="color:#666">-</span>muY) <span style="color:#007020;font-weight:bold">for</span> i, _ <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">enumerate</span>(y)])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic"># calculating the beta values</span>
+</span></span><span style="display:flex;"><span>    beta[<span style="color:#40a070">1</span>] <span style="color:#666">=</span> sXY <span style="color:#666">/</span> ssX
+</span></span><span style="display:flex;"><span>    beta[<span style="color:#40a070">0</span>] <span style="color:#666">=</span> muY <span style="color:#666">-</span> (beta[<span style="color:#40a070">1</span>] <span style="color:#666">*</span> muX)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">if</span> __name__ <span style="color:#666">==</span> <span style="color:#4070a0">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic"># initializing the data</span>
+</span></span><span style="display:flex;"><span>    x <span style="color:#666">=</span> [<span style="color:#40a070">1</span>, <span style="color:#40a070">2</span>, <span style="color:#40a070">3</span>, <span style="color:#40a070">4</span>, <span style="color:#40a070">5</span>, <span style="color:#40a070">6</span>, <span style="color:#40a070">7</span>]
+</span></span><span style="display:flex;"><span>    y <span style="color:#666">=</span> [<span style="color:#40a070">1</span>, <span style="color:#40a070">2</span>, <span style="color:#40a070">3</span>, <span style="color:#40a070">4</span>, <span style="color:#40a070">5</span>, <span style="color:#40a070">6</span>, <span style="color:#40a070">7</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic"># initializing the return object</span>
+</span></span><span style="display:flex;"><span>    beta <span style="color:#666">=</span> [<span style="color:#007020;font-weight:bold">None</span>] <span style="color:#666">*</span> <span style="color:#40a070">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic"># running the linear regression function</span>
+</span></span><span style="display:flex;"><span>    linearRegression(beta, x, y)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic"># printing out the results</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#007020">print</span>(beta)
+</span></span></code></pre></div><h2 id="cc">C/C++</h2>
+<p>C has always been an intriguing language to me purely due to the mystique around it. There&rsquo;s the manual memory management, the from-scratch data structures, and high level of abstraction that come together in this pliable language that can be used to create databases, servers, algorithms, applications, embedded systems &hellip; this list can go on and on into any direction which makes it so powerful.</p>
+<p>This power obviously comes at the cost of being forced to create most of this stuff from scratch where complexity and safety can be real concerns. Even one of C&rsquo;s greatest strengths, efficient memory and compute, can be a concern if things aren&rsquo;t handled correctly.</p>
+<p>Following off of C, C++ is just C plus a little extra in through added data structures and modules that make abstractions easier. These abstractions come at a cost where learning the APIs and fighting back the complexity of C++ are the real problems.</p>
+<p>With C/C++ being the oldest languages, there is a lot of legacy code and different industries that rely heavily on them. The one that I am primarily interested in would be the financial sector and algorithmic trading which relies on these languages for their low latency decision making. We also see the creep of these languages into machine learning and data science through the form of Python libraries such as <code>pandas</code>, <code>numpy</code>, and <code>tensorflow</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#007020">#include</span> <span style="color:#007020">&lt;iostream&gt;</span><span style="color:#007020">
+</span></span></span><span style="display:flex;"><span><span style="color:#007020">#include</span> <span style="color:#007020">&lt;vector&gt;</span><span style="color:#007020">
+</span></span></span><span style="display:flex;"><span><span style="color:#007020"></span><span style="color:#007020;font-weight:bold">using</span> <span style="color:#007020;font-weight:bold">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#902000">void</span> <span style="color:#06287e">linearRegression</span>(<span style="color:#902000">float</span> <span style="color:#666">*</span>beta, vector<span style="color:#666">&lt;</span><span style="color:#902000">float</span><span style="color:#666">&gt;</span> x, vector<span style="color:#666">&lt;</span><span style="color:#902000">float</span><span style="color:#666">&gt;</span> y)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic">// initializing the values
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#902000">int</span> n <span style="color:#666">=</span> x.size(), i;
+</span></span><span style="display:flex;"><span>    <span style="color:#902000">float</span> muX <span style="color:#666">=</span> <span style="color:#40a070">0</span>, muY <span style="color:#666">=</span> <span style="color:#40a070">0</span>, ssX <span style="color:#666">=</span> <span style="color:#40a070">0</span>, sXY <span style="color:#666">=</span> <span style="color:#40a070">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic">// finding the mean of the x and y arrays
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#007020;font-weight:bold">for</span> (i <span style="color:#666">=</span> <span style="color:#40a070">0</span>; i <span style="color:#666">&lt;</span> n; i<span style="color:#666">++</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        muX <span style="color:#666">+=</span> x[i];
+</span></span><span style="display:flex;"><span>        muY <span style="color:#666">+=</span> y[i];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    muX <span style="color:#666">=</span> muX <span style="color:#666">/</span> n;
+</span></span><span style="display:flex;"><span>    muY <span style="color:#666">=</span> muY <span style="color:#666">/</span> n;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic">// finding the sum of squares
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#007020;font-weight:bold">for</span> (i <span style="color:#666">=</span> <span style="color:#40a070">0</span>; i <span style="color:#666">&lt;</span> n; i<span style="color:#666">++</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        ssX <span style="color:#666">+=</span> (x[i] <span style="color:#666">-</span> muX) <span style="color:#666">*</span> (x[i] <span style="color:#666">-</span> muX);
+</span></span><span style="display:flex;"><span>        sXY <span style="color:#666">+=</span> (x[i] <span style="color:#666">-</span> muX) <span style="color:#666">*</span> (y[i] <span style="color:#666">-</span> muY);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic">// calcuating the beta values
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    beta[<span style="color:#40a070">1</span>] <span style="color:#666">=</span> sXY <span style="color:#666">/</span> ssX;
+</span></span><span style="display:flex;"><span>    beta[<span style="color:#40a070">0</span>] <span style="color:#666">=</span> muY <span style="color:#666">-</span> (beta[<span style="color:#40a070">1</span>] <span style="color:#666">*</span> muX);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#902000">int</span> <span style="color:#06287e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic">// initializing the data
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    vector<span style="color:#666">&lt;</span><span style="color:#902000">float</span><span style="color:#666">&gt;</span> x <span style="color:#666">=</span> {<span style="color:#40a070">1</span>, <span style="color:#40a070">2</span>, <span style="color:#40a070">3</span>, <span style="color:#40a070">4</span>, <span style="color:#40a070">5</span>, <span style="color:#40a070">6</span>, <span style="color:#40a070">7</span>};
+</span></span><span style="display:flex;"><span>    vector<span style="color:#666">&lt;</span><span style="color:#902000">float</span><span style="color:#666">&gt;</span> y <span style="color:#666">=</span> {<span style="color:#40a070">1</span>, <span style="color:#40a070">2</span>, <span style="color:#40a070">3</span>, <span style="color:#40a070">4</span>, <span style="color:#40a070">5</span>, <span style="color:#40a070">6</span>, <span style="color:#40a070">7</span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic">// initializing the return object
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    <span style="color:#902000">float</span> beta[<span style="color:#40a070">2</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic">// running the linear regression function
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    linearRegression(beta, x, y);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#60a0b0;font-style:italic">// printing out the results
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>    cout <span style="color:#666">&lt;&lt;</span> <span style="color:#4070a0">&#34;b0: &#34;</span> <span style="color:#666">&lt;&lt;</span> beta[<span style="color:#40a070">0</span>] <span style="color:#666">&lt;&lt;</span> <span style="color:#4070a0">&#34; b1: &#34;</span> <span style="color:#666">&lt;&lt;</span> beta[<span style="color:#40a070">1</span>] <span style="color:#666">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">return</span> <span style="color:#40a070">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="go">Go</h2>
+<p>Go is the language that I am most strongly drawn to in terms of its mission. The website defines Go as an &ldquo;open source programming language that makes it easy to build simple, reliable, and efficient software&rdquo; where the idea of simplicity is what draws me in the most.</p>
+<p>Go has a comprehensive standard library that allows software to be developed free of dependency (similar to C/C++) while also sticking to a strict style guideline which makes it very readable. Verbosity over <em>&ldquo;magic&rdquo;</em> is also appreciated within Go which is one of the main ideas that I follow throughout my code.</p>
+<p>On the surface Go seems like the perfect language for me since it enforces all of the things that I find important in code (low dependency, verbose, and easily read), but its usage in industry are not directly involved within the areas that I want to work in. Go is primarily used within distributed systems and concurrent designs where I hope to build analytical software or software that is used for edge computing.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">package</span> main
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">import</span> <span style="color:#4070a0">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">func</span> <span style="color:#06287e">linearRegression</span>(beta <span style="color:#666">*</span>[<span style="color:#40a070">2</span>]<span style="color:#902000">float32</span>, x []<span style="color:#902000">float32</span>, y []<span style="color:#902000">float32</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#60a0b0;font-style:italic">// initializing the values
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>	n <span style="color:#666">:=</span> <span style="color:#007020">len</span>(x)
+</span></span><span style="display:flex;"><span>	<span style="color:#007020;font-weight:bold">var</span> muX, muY, ssX, sXY <span style="color:#902000">float32</span> = <span style="color:#40a070">0</span>, <span style="color:#40a070">0</span>, <span style="color:#40a070">0</span>, <span style="color:#40a070">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#60a0b0;font-style:italic">// finding the mean of the x and y arrays
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>	<span style="color:#007020;font-weight:bold">for</span> i <span style="color:#666">:=</span> <span style="color:#40a070">0</span>; i &lt; n; i<span style="color:#666">++</span> {
+</span></span><span style="display:flex;"><span>		muX <span style="color:#666">+=</span> x[i]
+</span></span><span style="display:flex;"><span>		muY <span style="color:#666">+=</span> y[i]
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	muX = muX <span style="color:#666">/</span> <span style="color:#007020">float32</span>(n)
+</span></span><span style="display:flex;"><span>	muY = muY <span style="color:#666">/</span> <span style="color:#007020">float32</span>(n)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#60a0b0;font-style:italic">// finding the sum of squares
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>	<span style="color:#007020;font-weight:bold">for</span> i <span style="color:#666">:=</span> <span style="color:#40a070">0</span>; i &lt; n; i<span style="color:#666">++</span> {
+</span></span><span style="display:flex;"><span>		ssX <span style="color:#666">+=</span> (x[i] <span style="color:#666">-</span> muX) <span style="color:#666">*</span> (x[i] <span style="color:#666">-</span> muX)
+</span></span><span style="display:flex;"><span>		sXY <span style="color:#666">+=</span> (x[i] <span style="color:#666">-</span> muX) <span style="color:#666">*</span> (y[i] <span style="color:#666">-</span> muY)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#60a0b0;font-style:italic">// calcuating the beta values
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>	(<span style="color:#666">*</span>beta)[<span style="color:#40a070">1</span>] = sXY <span style="color:#666">/</span> <span style="color:#06287e">ssX</span>
+</span></span><span style="display:flex;"><span>	(<span style="color:#666">*</span>beta)[<span style="color:#40a070">0</span>] = muY <span style="color:#666">-</span> (beta[<span style="color:#40a070">1</span>] <span style="color:#666">*</span> muX)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">func</span> <span style="color:#06287e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#60a0b0;font-style:italic">// initializing the data
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>	<span style="color:#007020;font-weight:bold">var</span> x = []<span style="color:#902000">float32</span>{<span style="color:#40a070">1</span>, <span style="color:#40a070">2</span>, <span style="color:#40a070">3</span>, <span style="color:#40a070">4</span>, <span style="color:#40a070">5</span>, <span style="color:#40a070">6</span>, <span style="color:#40a070">7</span>}
+</span></span><span style="display:flex;"><span>	<span style="color:#007020;font-weight:bold">var</span> y = []<span style="color:#902000">float32</span>{<span style="color:#40a070">1</span>, <span style="color:#40a070">2</span>, <span style="color:#40a070">3</span>, <span style="color:#40a070">4</span>, <span style="color:#40a070">5</span>, <span style="color:#40a070">6</span>, <span style="color:#40a070">7</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#60a0b0;font-style:italic">// initializing the return object 
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>	<span style="color:#007020;font-weight:bold">var</span> beta [<span style="color:#40a070">2</span>]<span style="color:#902000">float32</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#60a0b0;font-style:italic">// running the linear regression function
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>	<span style="color:#06287e">linearRegression</span>(<span style="color:#666">&amp;</span>beta, x, y)
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#60a0b0;font-style:italic">// printing out the results
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span>	fmt.<span style="color:#06287e">Println</span>(beta)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="rust">Rust</h2>
+<p>Rust is the most interesting language to me on this list but it is also arguably the most complex and lesser implemented language. I think the potential of Rust is its most significant factor due to all of the potential use cases given its efficiency, safety, and recent support from larger companies. While I don&rsquo;t think that Rust will ever replace C/C++, there is the potential to use Rust in many of the same circumstances that you would consider C/C++ because it has access to many of the same APIs, it is as efficient, and has the added factor of memory safety.</p>
+<p>The potential of Rust being used for edge compute, which is about/something that I would like to work on, is massive given its support by Mozilla and its ability to compile to WASM.</p>
+<p>Learning Rust would be hedging my bets for the future on the potential but is not a given like C/C++ and Go are.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">fn</span> <span style="color:#06287e">linear_regression</span>(beta: <span style="color:#007020">&amp;</span><span style="color:#0e84b5;font-weight:bold">mut</span><span style="color:#bbb"> </span>[<span style="color:#902000">f32</span>;<span style="color:#bbb"> </span><span style="color:#40a070">2</span>],<span style="color:#bbb"> </span>x: <span style="color:#007020">Vec</span><span style="color:#666">&lt;</span><span style="color:#902000">f32</span><span style="color:#666">&gt;</span>,<span style="color:#bbb"> </span>y: <span style="color:#007020">Vec</span><span style="color:#666">&lt;</span><span style="color:#902000">f32</span><span style="color:#666">&gt;</span>)<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#60a0b0;font-style:italic">// initializing the values
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#bbb">    </span><span style="color:#007020;font-weight:bold">let</span><span style="color:#bbb"> </span>n<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>x.len();<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#007020;font-weight:bold">let</span><span style="color:#bbb"> </span>(<span style="color:#007020;font-weight:bold">mut</span><span style="color:#bbb"> </span>mux,<span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">mut</span><span style="color:#bbb"> </span>muy,<span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">mut</span><span style="color:#bbb"> </span>ssx,<span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">mut</span><span style="color:#bbb"> </span>sxy)<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>(<span style="color:#40a070">0.0</span>,<span style="color:#bbb"> </span><span style="color:#40a070">0.0</span>,<span style="color:#bbb"> </span><span style="color:#40a070">0.0</span>,<span style="color:#bbb"> </span><span style="color:#40a070">0.0</span>);<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#60a0b0;font-style:italic">// finding the mean of the x and y arrays
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#bbb">    </span><span style="color:#007020;font-weight:bold">for</span><span style="color:#bbb"> </span>i<span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">in</span><span style="color:#bbb"> </span><span style="color:#40a070">1</span><span style="color:#666">..</span>n<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>mux<span style="color:#bbb"> </span><span style="color:#666">+=</span><span style="color:#bbb"> </span>x[i];<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>muy<span style="color:#bbb"> </span><span style="color:#666">+=</span><span style="color:#bbb"> </span>y[i];<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>mux<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>mux<span style="color:#bbb"> </span><span style="color:#666">/</span><span style="color:#bbb"> </span>n<span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">as</span><span style="color:#bbb"> </span><span style="color:#902000">f32</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>muy<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>muy<span style="color:#bbb"> </span><span style="color:#666">/</span><span style="color:#bbb"> </span>n<span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">as</span><span style="color:#bbb"> </span><span style="color:#902000">f32</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#60a0b0;font-style:italic">// funding the sum of squares
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#bbb">    </span><span style="color:#007020;font-weight:bold">for</span><span style="color:#bbb"> </span>i<span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">in</span><span style="color:#bbb"> </span><span style="color:#40a070">1</span><span style="color:#666">..</span>n<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>ssx<span style="color:#bbb"> </span><span style="color:#666">+=</span><span style="color:#bbb"> </span>(x[i]<span style="color:#bbb"> </span><span style="color:#666">-</span><span style="color:#bbb"> </span>mux)<span style="color:#bbb"> </span><span style="color:#666">*</span><span style="color:#bbb"> </span>(x[i]<span style="color:#bbb"> </span><span style="color:#666">-</span><span style="color:#bbb"> </span>mux);<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>sxy<span style="color:#bbb"> </span><span style="color:#666">+=</span><span style="color:#bbb"> </span>(x[i]<span style="color:#bbb"> </span><span style="color:#666">-</span><span style="color:#bbb"> </span>mux)<span style="color:#bbb"> </span><span style="color:#666">*</span><span style="color:#bbb"> </span>(y[i]<span style="color:#bbb"> </span><span style="color:#666">-</span><span style="color:#bbb"> </span>muy);<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#60a0b0;font-style:italic">// calculating the beta values
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#bbb">    </span>beta[<span style="color:#40a070">1</span>]<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>sxy<span style="color:#bbb"> </span><span style="color:#666">/</span><span style="color:#bbb"> </span>ssx;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>beta[<span style="color:#40a070">0</span>]<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>muy<span style="color:#bbb"> </span><span style="color:#666">-</span><span style="color:#bbb"> </span>(beta[<span style="color:#40a070">1</span>]<span style="color:#bbb"> </span><span style="color:#666">*</span><span style="color:#bbb"> </span>mux);<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#007020;font-weight:bold">fn</span> <span style="color:#06287e">main</span>()<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#60a0b0;font-style:italic">// initializing the data
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#bbb">    </span><span style="color:#007020;font-weight:bold">let</span><span style="color:#bbb"> </span>x<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>vec![<span style="color:#40a070">1.0</span>,<span style="color:#bbb"> </span><span style="color:#40a070">2.0</span>,<span style="color:#bbb"> </span><span style="color:#40a070">3.0</span>,<span style="color:#bbb"> </span><span style="color:#40a070">4.0</span>,<span style="color:#bbb"> </span><span style="color:#40a070">5.0</span>,<span style="color:#bbb"> </span><span style="color:#40a070">6.0</span>,<span style="color:#bbb"> </span><span style="color:#40a070">7.0</span>];<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#007020;font-weight:bold">let</span><span style="color:#bbb"> </span>y<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>vec![<span style="color:#40a070">1.0</span>,<span style="color:#bbb"> </span><span style="color:#40a070">2.0</span>,<span style="color:#bbb"> </span><span style="color:#40a070">3.0</span>,<span style="color:#bbb"> </span><span style="color:#40a070">4.0</span>,<span style="color:#bbb"> </span><span style="color:#40a070">5.0</span>,<span style="color:#bbb"> </span><span style="color:#40a070">6.0</span>,<span style="color:#bbb"> </span><span style="color:#40a070">7.0</span>];<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#60a0b0;font-style:italic">// initializing the return object
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#bbb">    </span><span style="color:#007020;font-weight:bold">let</span><span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">mut</span><span style="color:#bbb"> </span>beta: [<span style="color:#902000">f32</span>;<span style="color:#bbb"> </span><span style="color:#40a070">2</span>]<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span>[<span style="color:#40a070">0.0</span>;<span style="color:#bbb"> </span><span style="color:#40a070">2</span>];<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#60a0b0;font-style:italic">// runnings the linear regression function
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#bbb">    </span>linear_regression(<span style="color:#666">&amp;</span><span style="color:#007020;font-weight:bold">mut</span><span style="color:#bbb"> </span>beta,<span style="color:#bbb"> </span>x,<span style="color:#bbb"> </span>y);<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#60a0b0;font-style:italic">// printing out the results
+</span></span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"></span><span style="color:#bbb">    </span>print!(<span style="color:#4070a0">&#34;b0: </span><span style="color:#70a0d0">{}</span><span style="color:#4070a0"> b1: </span><span style="color:#70a0d0">{}</span><span style="color:#4070a0"> </span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>,<span style="color:#bbb"> </span>beta[<span style="color:#40a070">0</span>],<span style="color:#bbb"> </span>beta[<span style="color:#40a070">1</span>]);<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span></code></pre></div></section>
+</div>
+</main>
+    <footer>
+  <div>
+    <ul>
+      <li>
+        <a
+          href="mailto:basjacob17@gmail.com"
+          target="_blank"
+          ><p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16"><path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/></svg></p>
+</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://github.com/JacobBas"
+          target="_blank"
+          ><p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></p>
+</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.linkedin.com/in/jacob-bas-52019714b"
+          target="_blank"
+          ><p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg></p>
+</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.instagram.com/jacobthebas"
+          target="_blank"
+          ><p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/></svg></p>
+</a
+        >
+      </li>
+    </ul>
+    <span
+      >Jacob Bas Copyright © 2022
+    </span>
+  </div>
+</footer>
+
+  </body>
+</html>

@@ -9,13 +9,13 @@
                 "Concentration in Finance"
                 , "Minor in Finance and Data Analysis and Mining"
             ]
-    [[education.institution]]
-        name = "Other"
-        [[education.institution.cert]]
-            name = "Professional Exams"
-            desc = [
-                "Exam P (Probability and Statistics)"
-                , "Exam MAS1 (Modern Actuarial Statistics)"
-                , "Exam FM (Financial Mathematics)"
-                , "Exam IFM (Investments and Financial Markets)"
-            ]
+    # [[education.institution]]
+    #     name = "Other"
+    #     [[education.institution.cert]]
+    #         name = "Professional Exams"
+    #         desc = [
+    #             "Exam P (Probability and Statistics)"
+    #             , "Exam MAS1 (Modern Actuarial Statistics)"
+    #             , "Exam FM (Financial Mathematics)"
+    #             , "Exam IFM (Investments and Financial Markets)"
+    #         ]

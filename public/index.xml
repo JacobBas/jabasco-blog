@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title></title>
+    <link>/</link>
+    <description>Recent content on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 16 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Goals for 2022</title>
+      <link>/posts/blog/goals-for-2022/</link>
+      <pubDate>Sun, 16 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/blog/goals-for-2022/</guid>
+      <description>Intro One thing that I&amp;rsquo;ve failed to do in the past is to create some goals to stick to throughout the rest of the year, but now that I have a personal blog I have the perfect medium to document my goals.
+Personal Goals During the past two years with COVID and a strong focus on career development, my personal development (and maintenance) has taken a backseat. This year I want to make sure that my mental and physical health are at the forefront so that I can build a strong sense of self.</description>
+    </item>
+    
+    <item>
+      <title>My Technology Learnings for 2021 Wrapped</title>
+      <link>/posts/blog/my-2021-learnings-wrapped/</link>
+      <pubDate>Sun, 05 Dec 2021 18:29:36 -0700</pubDate>
+      
+      <guid>/posts/blog/my-2021-learnings-wrapped/</guid>
+      <description>Intro While 2021 was a rough year due to Covid-19, it was also a year of learning and discovery for my professional career. One of the discoveries I&amp;rsquo;ve made throughout this year is where I want to take my career. I&amp;rsquo;m deliberately moving away from actuarial science and into the direction of a software engineer. There are many reasons why I don&amp;rsquo;t want to be an actuary anymore:
+Time-consuming and non-applicable exam structure Slow internal movement within most actuarial communities Pure unenjoyment with actuarial work With all that in mind, I made the difficult decision of removing myself from the exam process that I&amp;rsquo;ve sunk 100&amp;rsquo;s of hours and almost four years into.</description>
+    </item>
+    
+    <item>
+      <title>Least Squares Regression in Python, C&#43;&#43;, Go, and Rust</title>
+      <link>/posts/blog/linear-regression-in-4-languages/</link>
+      <pubDate>Mon, 01 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/blog/linear-regression-in-4-languages/</guid>
+      <description>Intro One thing that I have struggled with in the past year is figuring out which language I should spend my time learning. In my current work, I primarily use Python, JavaScript, and R so I&amp;rsquo;ve naturally built up a proficiency using these languages, but my toolbox is missing a statically typed, compiled language that I can fall back on.
+I&amp;rsquo;ve been in this loop of attempting to learn C/C++, Rust, and Go but have struggled to develop a deeper understanding of the languages due to the constant context switching.</description>
+    </item>
+    
+    <item>
+      <title>Using TensorFlow.js for Client Side Compute</title>
+      <link>/posts/blog/clientside-tensorflow/</link>
+      <pubDate>Thu, 30 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/blog/clientside-tensorflow/</guid>
+      <description>Intro At my current job, one of the largest problems that we face is the problem of limited compute power for our analytical web applications or the server&amp;rsquo;s ability to handle large computational loads. This causes all sorts of problems such as slow compute times, server outages, and unintended effects of slowing down the workflows of peers.
+The easiest solution to this is to push the computational load from the server onto the client where the server can act as more of a transport mechanism for the data.</description>
+    </item>
+    
+    <item>
+      <title>Writing Maintainable and Modular R Code</title>
+      <link>/posts/blog/writing-maintainable-r-code/</link>
+      <pubDate>Wed, 29 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/blog/writing-maintainable-r-code/</guid>
+      <description>Intro One of the largest problems that I have with writing R code is that it does not come with standard tooling for creating modular code which contributes to the unmaintainability of larger R projects. Since R code relies heavily on namespaces/environments and, by default, a global namespace it&amp;rsquo;s difficult to create a separation of responsibilities without some extra tooling.
+My two favorite packages for supplementing this are:
+renv: https://rstudio.github.io/renv/articles/renv.html box: https://github.</description>
+    </item>
+    
+  </channel>
+</rss>

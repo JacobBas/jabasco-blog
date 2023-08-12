@@ -1,31 +1,36 @@
 [skills]
     languages = [
-        "Python"
-        , "JavaScript"
-        , "R"
-        , "Go"
-        , "SQL"
+        "Python",
+        "Go",
+        "JavaScript",
+        "R",
+        "SQL",
     ]
     tools = [
-        "Flask"
-        , "React"
-        , "TensorFlow"
-        , "GraphQL"
-        , "AWS"
-        , "Docker"
-        , "Linux"
-        , "Bash"
-        , "Git"
-        , "GitHub"
+        "AWS ECS",
+        "AWS S3",
+        "Bash",
+        "DataDog",
+        "Docker",
+        "Flask",
+        "Git",
+        "GitHub",
+        "GraphQL",
+        "Linux",
+        "Neovim",
+        "PagerDuty",
+        "React",
     ]
     topics = [
-        "Financial Analysis"
-        , "Data Modeling"
-        , "Data Analysis"
-        , "Microservices"
-        , "Object Oriented Programming"
-        , "Unit Testing"
-        , "Visualization"
-        , "Web Development"
-        , "Web Scraping"
+        "ADR Development",
+        "Code Refactoring",
+        "Data Analysis",
+        "Data Modeling",
+        "Functional Programming",
+        "Incident Response",
+        "Integration Testing",
+        "Microservices",
+        "Object Oriented Programming",
+        "Project Planning",
+        "Unit Testing",
     ]
