@@ -1,167 +1,156 @@
 [experience]
-    [[experience.company]]
-        name = "Coalition Inc."
-        [[experience.company.role]]
-            name = "Software Engineer"
-            start = "January 2022"
-            end ="Present"
-            [[experience.company.role.bullet]]
-                desc = """Led the Underwriting Engineering team in the development of new 
-                insurance products for global markets. Developed core cyber insurance pricing 
-                logic in collaboration with actuaries, data scientists, and underwriters. 
-                Enabled cross-functional development and deployment of new pricing models 
-                resulting in increased GWP and expansion into markets like the US, UK, Canada, 
-                and beyond."""
-                items = [
-                    "People Leadership",
-                    "Thought Leadership",
-                    "Jira",
-                    "Communications",
-                    "Delegation",
-                ]
-            [[experience.company.role.bullet]]
-                desc = """Conceptualized and developed a modular, layer-based framework for 
-                core rating models. Ensured distinct entry points for business users and simplified 
-                the understanding of models for non-technical users. Additionally, facilitated 
-                underwriters with an abstracted post-processing flow to comprehend model output 
-                data more efficiently."""
-                items = [
-                    "Independent Work Contribution",
-                    "Thought Leadership",
-                    "Python",
-                    "Flask",
-                    "PostgreSQL",
-                ]
-            [[experience.company.role.bullet]]
-                desc = """Designed and implemented an orchestration service, leveraging Kafka, 
-                for improved service uptime and modularity between evaluation processes. 
-                Contributed to the initiation of event-based workflows and ensured robust retry 
-                mechanisms for lifecycle flows and consistent data handling."""
-                items = [
-                    "People Leadership",
-                    "Thought Leadership",
-                    "Go",
-                    "Kafka",
-                ]
-            [[experience.company.role.bullet]]
-                desc = """Introduced a team Kaizen process for continuous improvement. Facilitated 
-                open feedback discussions to refine on-call processes, enhance communication 
-                with business partners, and foster a collaborative engineering environment."""
-                items = [
-                    "Process Improvement",
-                    "Feedback Mechanisms",
-                ]
-            [[experience.company.role.bullet]]
-                desc = """Significantly contributed to design documentation and company-wide 
-                initiatives for technical debt resolution and product requirements refinement. 
-                Facilitated faster development processes and bolstered company growth."""
-                items = []
-            [[experience.company.role.bullet]]
-                desc = """Worked closely with front-end, underwriting, and product teams to 
-                enhance interface design for analytical data comprehension from pricing models. 
-                Developed algorithms to aggregate and simplify insurance pricing data for 
-                transparent customer interactions, especially in the renewals segment, ensuring 
-                sustained profitability and strong broker relationships."""
-                items = [
-                    "Collaboration",
-                    "Algorithm Development",
-                ]
-            [[experience.company.role.bullet]]
-                desc = """Created comprehensive training modules and technical documentation 
-                for onboarding technical and non-technical teams. Engaged in presentations 
-                and discussions to elucidate technical analyses and ensure a holistic understanding 
-                of pricing model outputs."""
-                items = [
-                    "Training & Development",
-                    "Documentation",
-                    "Presentations",
-                ]
-            [[experience.company.role.bullet]]
-                desc = """Managed on-call responsibilities, including triage and incident 
-                management. Spearheaded the internal post-mortem review process to identify 
-                core issues and implement preventive measures."""
-                items = []
-            [[experience.company.role.bullet]]
-                desc = """Conducted interviews for varying engineering levels and engineering 
-                managers for my direct team. Ensured the recruitment of top-tier talent to drive 
-                the company's technical vision."""
-                items = []
-            [[experience.company.role.bullet]]
-                desc = """Defined and monitored SLOs and SLAs for a suite of microservices, 
-                ensuring high service quality and responsiveness."""
-                items = []
 
-    [[experience.company]]
-        name = "Allstate Insurance"
-        [[experience.company.role]]
-            name = "Technical Actuary"
-            start = "August 2019"
-            end ="January 2022"
-            [[experience.company.role.bullet]]
-                desc = """Led the full-stack development of a web application designed for analyzing 
-                historical financial data to predict future risk. Lead to an enhanced analysis 
-                of country-wide profitability measures."""
-                items = [
-                    "Flask",
-                    "React",
-                    "AWS S3",
-                    "Tensorflow.js",
-                    "D3.js"
-                ]
-            [[experience.company.role.bullet]]
-                desc = """Developed and maintained a RESTful microservice infrustructure to communicate 
-                with internal and external tooling and APIs. Created a more modular view of our 
-                data process and enhanced the efficiency at which analytical software is 
-                developed."""
-                items = [
-                    "Flask",
-                    "AWS S3",
-                    "Web Scraping"
-                ]
-            [[experience.company.role.bullet]]
-                desc = """Led the full-stack development of a web application housing the personal 
-                development information of 250+ coworkers for use at the director level."""
-                items = [
-                    "Flask",
-                    "React",
-                    "SQL Server",
-                    "Bootstrap"
-                ]
-            [[experience.company.role.bullet]]
-                desc = """Used statistical and financial analysis to influence state-specific and 
-                country-wide implementations."""
-                items = []
-            [[experience.company.role.bullet]]
-                desc = """Lead the development of trainings and documentation over the usage of technology 
-                within a business unit of 350+ peers: Python, R, JavaScript, SQL, GitHub, Docker, AWS."""
-                items = []
-            [[experience.company.role.bullet]]
-                desc = """Contributed to data analysis and modeling pipelines by preparing and interpreting 
-                results used within GLM, GAM, and GBM models. Communicated results to non-technical 
-                stakeholders."""
-                items = []
+# --------------------------------------------------------------------------------------------
+[[experience.company]]
+name = "Coalition Inc."
 
-    # [[experience.company]]
-    #     name = "Aon"
-    #     [[experience.company.role]]
-    #         name = "Actuarial Intern"
-    #         start = "September 2018"
-    #         end = "May 2019"
-    #         [[experience.company.role.bullet]]
-    #             desc = """Completed the analysis of long-term financial data using stochastic and deterministic 
-    #             analsyis to assess the risk and viability of financial decisions."""
-    #             items = []
-    #         [[experience.company.role.bullet]]
-    #             desc = """Communicated results of financial analysis to external clients."""
-    #             items = []
+[[experience.company.role]]
+name = "Software Engineer"
+start = "January 2022"
+end ="Present"
 
-    # [[experience.company]]
-    # name = "DePaul University"
-    #     [[experience.company.role]]
-    #         name = "Mathematics Teaching Assistant"
-    #         start = "March 2019"
-    #         end = "May 2019"
-    #         [[experience.company.role.bullet]]
-    #             desc = """Communicated a detailed understanding of advanced statistical concepts to a group 
-    #             of 15+ students."""
-    #             items = []
+[[experience.company.role.bullet]]
+desc = "Led the Underwriting team to launch global insurance products. Co-created cyber insurance pricing with global expansion in mind."
+items = ["Team Leadership", "Pricing Development", "Market Expansion"]
+examples = [
+    """Implementation of BLIMPv1 and BLIMPv2 which were worldwide models that were used to price our
+    cyber insurance product.""",
+    """Implementation of our CIC pricing model which allowed us to write business within the admitted
+    which is a core risk segment that is not captured by the surplus market. This is an impressive
+    product given the high amount of scrutiny and regulation that is present within the admitted market.""",
+]
+
+[[experience.company.role.bullet]]
+desc = "Created a user-friendly pricing model framework. Improved model data interpretation for non-tech users."
+items = ["Framework Development", "Python"]
+examples = [
+    """The CoMSOM framework revolutionized our pricing model with four integral layers: the 
+    Feature Extractor layer normalized client data for model interpretation; the CSV Loader layer
+    served as the main interface for business users to set pricing model parameters; the Model Steps 
+    layer acted as the nexus between feature extraction and CSV loading, executing the actual 
+    pricing; and the Post-Processing layer refined raw pricing data into comprehensible outputs 
+    for external stakeholders""",
+    """This CoMSOM framework also solved the problem of pricing consistency and model versioning
+    which allowed us to stay complient within the bounds of potential insuring agreements. It 
+    also is a key factor in allowing us to price premium bearing endorsements and risk reduction
+    incentives which are heavily reliant on consistent model versioning which was not possible
+    before the implementation of the CoMSOM framework"""
+]
+
+[[experience.company.role.bullet]]
+desc = "Built an orchestration service with Kafka for enhanced reliability. Introduced event-driven workflows."
+items = ["Service Engineering", "Kafka", "Workflow Management", "Temporal", "gRPC", "Go"]
+examples = [
+    """The two biggest topics here to discuss is that this service helped us to define and identify
+    the differences between eventual evaluation and immediate evaluation. Processes with immediate
+    evaluation required prompt delivery of status codes since they are blocking processes. 
+    Eventual evaluation events are those that are non-blocking and that we want to gaurentee 
+    success at some point; this can be instant or take a few hours, but as long as it gets done
+    then it is okay""",
+    """The eventual consistency mechanism that we decided to use was temporal which is a workflow
+    management system which allowed this eventual evaluation.""",
+    """The immediate evaluation mechanism used was normal gRPC endpoints that allowed for a 
+    heavy amount of type and structure checking to ensure valid communication between our shared
+    data across our Python and Go services.""",
+    """One of the main pain points described throughout our calculations is that this knew Introduced
+    service would potentially caused a single point of failure that we would need to be able to
+    handle.""",
+    """WHAT WERE THE KEY DECISION POINTS THAT WERE DISCUSSED AND THAT HAD A HARD TIME GETTING PASSED""",
+]
+
+[[experience.company.role.bullet]]
+desc = "Launched Kaizen for continuous improvement. Boosted team performance with open feedback."
+items = ["Process Enhancement", "Feedback Management"]
+examples = [
+    """Before the implementation of this process and documentation forum the Underwriting Engineering
+    the underwriting engineering team had no real processes for documenting and handing off on-call
+    items to the next on-call user. After the implementation we had a standard form and documentation
+    for handing off the items which has improved the process and the teams overall understanding
+    of our service metrics.""",
+]
+
+[[experience.company.role.bullet]]
+desc = "Enhanced design docs and tackled technical debt. Accelerated development and company growth."
+items = ["Documentation", "Technical Strategy"]
+examples = [
+    """I've been an approver on multiple different key ROADMAPS:
+    - Risk reduction incentives: https://fiasco.atlassian.net/wiki/spaces/ENG/pages/3172171851/ADR+-+Design+for+Risk+Reduction+Incentives
+    - Distribution Programs: https://fiasco.atlassian.net/wiki/spaces/ENG/pages/3107520606/ADR+-+Distribution+Programs
+    - Scanning consistency: https://fiasco.atlassian.net/wiki/spaces/ENG/pages/3185344884/ADR+-+Scanning+Consistency
+    """,
+]
+
+[[experience.company.role.bullet]]
+desc = "Optimized UI/UX for data display. Designed algorithms for simpler insurance pricing data presentation."
+items = ["UI/UX Collaboration", "Algorithm Design"]
+examples = [
+    """Core example here is the project Renewals Calcualtor which had been the starting stages of
+    implementating our core post-processing functions for our pricing data. This project has allowed
+    us a simple layer and interface for improving the data interpretability for our non-technical
+    users""",
+    """Other general pricing transparency work that has been a slow burn since I started at the 
+    comapny which for the most part has been a ton of work on storing the appropriate data to ensure that things
+    are auditable. Next steps are to make this data more available for our underwriters in a way that
+    is understandable to them so that ther can actually use the data.
+    """
+]
+
+[[experience.company.role.bullet]]
+desc = "Developed training and documentation modules for all teams. Led tech discussions to simplify analytics."
+items = ["Training Modules", "Tech Communication"]
+examples = [
+    """Wrote docuemtnation over the nuances of pricing from a technical and actuarial perspective that were 
+    used in onboarding technical and non-technical team memebers into the nuances of insurance topics. 
+    This helped to drive forward the overall insurance domain knowledge within a company that has 
+    been for the most part tech driven.""",
+]
+
+[[experience.company.role.bullet]]
+desc = """Assisted in engineering recruitment by interviewing multiple levels of independent contriubtors 
+and management within the engineering org. Ensured hiring aligned with company's tech goals."""
+items = ["Recruitment", "Talent Strategy"]
+examples = [
+    "",
+]
+
+[[experience.company.role.bullet]]
+desc = """Managed on-call duties and led incident reviews. Set and tracked SLOs and SLAs for microservices. 
+Prioritized service quality and response time."""
+items = ["Incident Management", "Analysis & Strategy", "Service Monitoring"]
+examples = [
+    "",
+]
+
+
+# --------------------------------------------------------------------------------------------
+[[experience.company]]
+name = "Allstate Insurance"
+
+[[experience.company.role]]
+name = "Technical Actuary"
+start = "August 2019"
+end ="January 2022"
+
+[[experience.company.role.bullet]]
+desc = "Developed a web app to analyze financial data for risk prediction, improving profitability analysis."
+items = ["Flask", "React", "AWS S3", "Tensorflow.js", "D3.js"]
+
+[[experience.company.role.bullet]]
+desc = "Set up a RESTful microservice for tool communication, enhancing analytical software efficiency."
+items = ["Flask", "AWS S3", "Web Scraping"]
+
+[[experience.company.role.bullet]]
+desc = "Built a web app tracking personal development of 250+ staff for director use."
+items = ["Flask", "React", "SQL Server", "Bootstrap"]
+
+[[experience.company.role.bullet]]
+desc = "Guided state and country decisions using statistical analysis."
+items = []
+
+[[experience.company.role.bullet]]
+desc = "Created tech training and docs for 350+ peers: Python, R, JS, SQL, GitHub, Docker, AWS."
+items = []
+
+[[experience.company.role.bullet]]
+desc = "Supported data pipelines, interpreting results for GLM, GAM, GBM models."
+items = []
