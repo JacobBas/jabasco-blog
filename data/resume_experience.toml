@@ -10,7 +10,28 @@ start = "January 2022"
 end ="Present"
 
 [[experience.company.role.bullet]]
-desc = "Led the Underwriting team to launch global insurance products. Co-created cyber insurance pricing with global expansion in mind."
+desc = "Mentored new engineers in software engineering best practices and insurance domain knowledge."
+items = ["Mentorship"]
+examples = [
+    """Mentored new hire who had never done software engineering before to be an independent 
+    contributor and on-call engineer within 3 months of hiring. Pushed her to lead projects, 
+    writer design documents, and write good code. Mentorship approach was very heavily involved
+    at the start where towards the later time I start to step off in terms of involvement to
+    ensure that I was supporting her in building confidence as an independent contributor.""",
+]
+
+[[experience.company.role.bullet]]
+desc = "Created new backtesting and fuzzy testing frameworks to ensure reliability of code."
+items = ["Testing", "Backtesting", "Fuzz Testing"]
+examples = [
+    """Created a new fuzzy testing framework that helped ensure that we were properly testing
+    our new model implementations in absence of real backtesting data. Ran millions of random 
+    complex nested data through the code to ensure reliability. From this, we were also able to
+    test the distribution of our data to ensure that impacts were as expected.""",
+]
+
+[[experience.company.role.bullet]]
+desc = "Led the Underwriting Engineering team to launch global insurance products. Co-created cyber insurance pricing with global expansion in mind."
 items = ["Team Leadership", "Pricing Development", "Market Expansion"]
 examples = [
     """Implementation of BLIMPv1 and BLIMPv2 which were worldwide models that were used to price our

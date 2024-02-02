@@ -31,4 +31,6 @@
         "Integration & Unit Testing",
         "Data Modeling & Analysis",
         "Project & Team Management",
+        "Fuzz Testing",
+        "Backtesting",
     ]
