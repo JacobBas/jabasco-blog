@@ -1,34 +1,40 @@
 [skills]
-    languages = [
-        "Python",
-        "Go",
-        "JavaScript",
-        "SQL",
-    ]
-    tools = [
-        "AWS (ECS, S3)",
-        "Docker",
-        "Kubernetes",
-        "Flask",
-        "React",
-        "GraphQL",
-        "Git/GitHub",
-        "DataDog",
-        "Linux",
-        "Neovim",
-        "PagerDuty",
-    ]
-    topics = [
-        "Agile & Scrum",
-        "Continuous Integration/Continuous Deployment (CI/CD)",
-        "Microservices Architecture",
-        "Object-Oriented Programming (OOP)",
-        "Functional Programming",
-        "Design Patterns",
-        "Code Refactoring",
-        "ADR Development",
-        "Incident Response",
-        "Integration & Unit Testing",
-        "Data Modeling & Analysis",
-        "Project & Team Management",
-    ]
+  languages = [
+    "Python",
+    "Go",
+    "SQL",
+    "JavaScript/TypeScript",
+  ]
+
+  tools = [
+    # Cloud, Data Platforms & Infrastructure
+    "AWS (ECS, S3, Lambda)",
+    "Snowflake",
+    "Terraform",
+    "Docker",
+    "Kafka",
+    # Observability & CI/CD
+    "DataDog",
+    "PagerDuty",
+    # Frameworks & Core Tools
+    "Flask",
+    "React",
+    "GraphQL",
+    "Git/GitHub",
+  ]
+
+  topics = [
+    # Architecture & High-Level Design
+    "System Design & Architecture",
+    "Microservices",
+    "Distributed Systems",
+    # Reliability & Operations
+    "SLO/SLA Management",
+    "Incident Response",
+    # Data & ML Concepts
+    "Data Modeling & Pipeline Architecture",
+    "Statistical Anomaly Detection",
+    # Methodologies
+    "CI/CD",
+    "Agile & Scrum",
+  ]
